@@ -1,0 +1,11 @@
+{
+    "uid": "20250322164309407262",
+    "start_city": "深圳",
+    "target_city": "上海",
+    "days": 3,
+    "people_number": 4,
+    "hard_logic_py": [
+        "result_list=[]\nrestaurant_name_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['breakfast', 'lunch', 'dinner']: restaurant_name_set.add(activity_position(activity))\nresult=({\"村口大树\", \"壹泰Ethai·朝天椒·泰焗(新天地店)\", \"上海宝格丽酒店·宝丽轩中餐厅\"}<=restaurant_name_set)\nresult_list.append(result)\nresult=False\nfor activity in allactivities(plan):\n  if activity_position(activity)=='上海海洋水族馆':\n    if activity_end_time(activity)>='14:00':\n      result=True\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们4人，从深圳出发，到上海旅行3天，要求满足以下任意一个：\n1. 希望尝试以下餐厅：村口大树 和 壹泰Ethai·朝天椒·泰焗(新天地店) 和 上海宝格丽酒店·宝丽轩中餐厅\n2. 希望不早于14:00离开上海海洋水族馆"
+}

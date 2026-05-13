@@ -1,0 +1,11 @@
+{
+    "uid": "20250323011042997296",
+    "start_city": "上海",
+    "target_city": "深圳",
+    "days": 4,
+    "people_number": 3,
+    "hard_logic_py": [
+        "result_list=[]\ninner_city_transportation_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity)=='transportation': inner_city_transportation_set.add(activity_position(activity))\nresult=not({\"taxi\"}&inner_city_transportation_set)\nresult_list.append(result)\nresult=False\nfor activity in allactivities(plan):\n  if activity_position(activity)=='南山公园':\n    if activity_end_time(activity)>='13:50':\n      result=True\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们3人，从上海出发，到深圳旅行4天，要求满足以下任意一个：\n1. 不希望以taxi方式在城市内出行\n2. 希望不早于13:50离开南山公园"
+}

@@ -1,0 +1,16 @@
+{
+    "uid": "20250323140629198648",
+    "start_city": "深圳",
+    "target_city": "上海",
+    "days": 2,
+    "people_number": 1,
+    "hard_logic_py": [
+        "result=False\nfor activity in allactivities(plan):\n  if activity_position(activity)=='C Cafe(朵云书院旗舰店)':\n    if activity_start_time(activity)<='17:00' and activity_end_time(activity)>='17:40':\n      result=True",
+        "result=False\naccommodation_position=''\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_position=activity_position(activity)\nresult=(poi_distance(target_city(plan), '人民广场', accommodation_position)<=4.381496606225029)",
+        "result=(day_count(plan)==2)",
+        "result=(people_count(plan)==1)",
+        "result=True\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['attraction', 'airplane', 'train'] and activity_tickets(activity)!=1: result=False\n  if innercity_transport_type(activity_transports(activity))=='metro'and metro_tickets(activity_transports(activity))!=1: result=False",
+        "result=True\nfor activity in allactivities(plan):\n  if innercity_transport_type(activity_transports(activity))=='taxi'and taxi_cars(activity_transports(activity))!=1: result=False"
+    ],
+    "nature_language": "我们1人，从深圳出发，到上海旅行2天，要求如下：\n希望在17:00到17:40之间游览C Cafe(朵云书院旗舰店)\n希望住宿地在人民广场周围4.39千米内"
+}

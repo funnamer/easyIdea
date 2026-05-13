@@ -1,0 +1,11 @@
+{
+    "uid": "20250322153529789519",
+    "start_city": "成都",
+    "target_city": "深圳",
+    "days": 3,
+    "people_number": 2,
+    "hard_logic_py": [
+        "result_list=[]\nrestaurant_name_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['breakfast', 'lunch', 'dinner']: restaurant_name_set.add(activity_position(activity))\nresult=not({\"山禾田·创作料理(罗湖店)\", \"Paulaner·德国帕拉娜自酿啤酒餐厅(海上世界店)\"}&restaurant_name_set)\nresult_list.append(result)\ninter_city_transportation_cost=0\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['airplane','train']: inter_city_transportation_cost+=activity_cost(activity)\nresult=inter_city_transportation_cost<=3100\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们2人，从成都出发，到深圳旅行3天，要求满足以下任意一个：\n1. 不希望尝试以下餐厅：山禾田·创作料理(罗湖店) 和 Paulaner·德国帕拉娜自酿啤酒餐厅(海上世界店)\n2. 跨城市交通的预算为3100.0"
+}

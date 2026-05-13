@@ -1,0 +1,11 @@
+{
+    "uid": "20250322170959500916",
+    "start_city": "深圳",
+    "target_city": "上海",
+    "days": 3,
+    "people_number": 4,
+    "hard_logic_py": [
+        "result_list=[]\nrestaurant_name_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['breakfast', 'lunch', 'dinner']: restaurant_name_set.add(activity_position(activity))\nresult=({\"莲餐厅·湖北菜(中山公园店)\", \"哈灵面馆(广西北路店)\", \"上海中心J酒店·天之锦中餐厅\"}<=restaurant_name_set)\nresult_list.append(result)\nresult=False\nfor activity in allactivities(plan):\n  if activity_position(activity)=='SKY RING 屋顶摩天轮':\n    if activity_end_time(activity)>='13:50':\n      result=True\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们4人，从深圳出发，到上海旅行3天，要求满足以下任意一个：\n1. 希望尝试以下餐厅：莲餐厅·湖北菜(中山公园店) 和 哈灵面馆(广西北路店) 和 上海中心J酒店·天之锦中餐厅\n2. 希望不早于13:50离开SKY RING 屋顶摩天轮"
+}

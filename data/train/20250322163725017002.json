@@ -1,0 +1,11 @@
+{
+    "uid": "20250322163725017002",
+    "start_city": "成都",
+    "target_city": "深圳",
+    "days": 2,
+    "people_number": 2,
+    "hard_logic_py": [
+        "result_list=[]\nrestaurant_type_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['breakfast', 'lunch', 'dinner']: restaurant_type_set.add(restaurant_type(activity, target_city(plan)))\nresult=({\"粤菜\"}&restaurant_type_set)\nresult_list.append(result)\ninter_city_transportation_cost=0\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['airplane','train']: inter_city_transportation_cost+=activity_cost(activity)\nresult=inter_city_transportation_cost<=2800\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们2人，从成都出发，到深圳旅行2天，要求满足以下任意一个：\n1. 希望尝试以下类型的餐厅之一粤菜\n2. 跨城市交通的预算为2800.0"
+}

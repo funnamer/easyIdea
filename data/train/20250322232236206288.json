@@ -1,0 +1,11 @@
+{
+    "uid": "20250322232236206288",
+    "start_city": "深圳",
+    "target_city": "杭州",
+    "days": 5,
+    "people_number": 3,
+    "hard_logic_py": [
+        "result_list=[]\ninner_city_transportation_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity)=='transportation': inner_city_transportation_set.add(activity_position(activity))\nresult=not({\"walk\", \"taxi\"}&inner_city_transportation_set)\nresult_list.append(result)\ninter_city_transportation_cost=0\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['airplane','train']: inter_city_transportation_cost+=activity_cost(activity)\nresult=inter_city_transportation_cost<=3800\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们3人，从深圳出发，到杭州旅行5天，要求满足以下任意一个：\n1. 不希望以walk 和 taxi方式在城市内出行\n2. 跨城市交通的预算为3800.0"
+}

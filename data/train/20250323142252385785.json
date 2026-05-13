@@ -1,0 +1,16 @@
+{
+    "uid": "20250323142252385785",
+    "start_city": "武汉",
+    "target_city": "深圳",
+    "days": 2,
+    "people_number": 2,
+    "hard_logic_py": [
+        "result=False\nidx_activity0=0\nidx_activity1=0\ni=0\nfor activity in allactivities(plan):\n  if activity_position(activity)=='碧海湾公园':\n    idx_activity0=i\n  if activity_position(activity)=='新西园饮食店(金烁路店)':\n    idx_activity1=i\n  i+=1\nif idx_activity0<idx_activity1:\n  result=True",
+        "result=False\naccommodation_position=''\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_position=activity_position(activity)\nresult=(poi_distance(target_city(plan), '铁仔山公园', accommodation_position)<=11.814391396171393)",
+        "result=(day_count(plan)==2)",
+        "result=(people_count(plan)==2)",
+        "result=True\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['attraction', 'airplane', 'train'] and activity_tickets(activity)!=2: result=False\n  if innercity_transport_type(activity_transports(activity))=='metro'and metro_tickets(activity_transports(activity))!=2: result=False",
+        "result=True\nfor activity in allactivities(plan):\n  if innercity_transport_type(activity_transports(activity))=='taxi'and taxi_cars(activity_transports(activity))!=1: result=False"
+    ],
+    "nature_language": "我们2人，从武汉出发，到深圳旅行2天，要求如下：\n希望先去碧海湾公园，再去新西园饮食店(金烁路店)\n希望住宿地在铁仔山公园周围11.82千米内"
+}

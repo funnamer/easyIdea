@@ -1,0 +1,15 @@
+{
+    "uid": "20250323110221959432",
+    "start_city": "重庆",
+    "target_city": "南京",
+    "days": 4,
+    "people_number": 4,
+    "hard_logic_py": [
+        "result=False\naccommodation_position=''\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_position=activity_position(activity)\nresult=(poi_distance(target_city(plan), '夫子庙秦淮风光带', accommodation_position)<=7.126702917708813)",
+        "result=(day_count(plan)==4)",
+        "result=(people_count(plan)==4)",
+        "result=True\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['attraction', 'airplane', 'train'] and activity_tickets(activity)!=4: result=False\n  if innercity_transport_type(activity_transports(activity))=='metro'and metro_tickets(activity_transports(activity))!=4: result=False",
+        "result=True\nfor activity in allactivities(plan):\n  if innercity_transport_type(activity_transports(activity))=='taxi'and taxi_cars(activity_transports(activity))!=1: result=False"
+    ],
+    "nature_language": "我们4人，从重庆出发，到南京旅行4天，要求如下：\n希望住宿地在夫子庙秦淮风光带周围7.13千米内"
+}

@@ -1,0 +1,11 @@
+{
+    "uid": "20250322202531270783",
+    "start_city": "武汉",
+    "target_city": "成都",
+    "days": 2,
+    "people_number": 2,
+    "hard_logic_py": [
+        "result_list=[]\naccommodation_name_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_name_set.add(activity_position(activity))\nresult=({\"成都莱恩度假套房公寓(春熙路太古里店)\"}<=accommodation_name_set)\nresult_list.append(result)\naccommodation_cost=0\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_cost+=activity_cost(activity)\nresult=accommodation_cost<=500\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们2人，从武汉出发，到成都旅行2天，要求满足以下任意一个：\n1. 希望入住以下酒店成都莱恩度假套房公寓(春熙路太古里店)\n2. 在住宿上的预算为500.0"
+}

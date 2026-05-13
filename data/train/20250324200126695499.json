@@ -1,0 +1,11 @@
+{
+    "uid": "20250324200126695499",
+    "start_city": "杭州",
+    "target_city": "武汉",
+    "days": 2,
+    "people_number": 2,
+    "hard_logic_py": [
+        "result_list=[]\nrestaurant_cost=0\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['breakfast', 'lunch', 'dinner']: restaurant_cost+=activity_cost(activity)\nresult=restaurant_cost<=1400\nresult_list.append(result)\nresult=False\nfor activity in allactivities(plan):\n  if activity_position(activity)=='平安大厦':\n    if activity_end_time(activity)>='14:20':\n      result=True\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们2人，从杭州出发，到武汉旅行2天，要求满足以下任意一个：\n1. 在用餐上的预算为1400.0\n2. 希望不早于14:20离开平安大厦"
+}

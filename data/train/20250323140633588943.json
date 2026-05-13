@@ -1,0 +1,11 @@
+{
+    "uid": "20250323140633588943",
+    "start_city": "南京",
+    "target_city": "重庆",
+    "days": 4,
+    "people_number": 4,
+    "hard_logic_py": [
+        "result_list=[]\nresult=False\nfor activity in allactivities(plan):\n  if activity_position(activity)=='李子坝轻轨站':\n    if activity_end_time(activity)>='13:50':\n      result=True\nresult_list.append(result)\nresult=False\naccommodation_position=''\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_position=activity_position(activity)\nresult=(poi_distance(target_city(plan), '朝天门大桥', accommodation_position)<=3.7538471127782578)\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们4人，从南京出发，到重庆旅行4天，要求满足以下任意一个：\n1. 希望不早于13:50离开李子坝轻轨站\n2. 希望住宿地在朝天门大桥周围3.76千米内"
+}

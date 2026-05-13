@@ -1,0 +1,16 @@
+{
+    "uid": "20250323112709759488",
+    "start_city": "南京",
+    "target_city": "重庆",
+    "days": 4,
+    "people_number": 4,
+    "hard_logic_py": [
+        "inner_city_transportation_cost=0 \nfor activity in allactivities(plan):\n    inner_city_transportation_cost += innercity_transport_cost(activity_transports(activity))\nresult=(inner_city_transportation_cost<=470)",
+        "result=False\naccommodation_position=''\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_position=activity_position(activity)\nresult=(poi_distance(target_city(plan), '飞越重庆悬空影院', accommodation_position)<=4.234459809346989)",
+        "result=(day_count(plan)==4)",
+        "result=(people_count(plan)==4)",
+        "result=True\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['attraction', 'airplane', 'train'] and activity_tickets(activity)!=4: result=False\n  if innercity_transport_type(activity_transports(activity))=='metro'and metro_tickets(activity_transports(activity))!=4: result=False",
+        "result=True\nfor activity in allactivities(plan):\n  if innercity_transport_type(activity_transports(activity))=='taxi'and taxi_cars(activity_transports(activity))!=1: result=False"
+    ],
+    "nature_language": "我们4人，从南京出发，到重庆旅行4天，要求如下：\n在城市内出行的预算为470.0\n希望住宿地在飞越重庆悬空影院周围4.24千米内"
+}

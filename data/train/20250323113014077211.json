@@ -1,0 +1,16 @@
+{
+    "uid": "20250323113014077211",
+    "start_city": "深圳",
+    "target_city": "上海",
+    "days": 2,
+    "people_number": 1,
+    "hard_logic_py": [
+        "attraction_type_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity)=='attraction': attraction_type_set.add(attraction_type(activity, target_city(plan)))\nresult=({\"商业街区\", \"游乐园/体育娱乐\", \"美术馆/艺术馆\"}<=attraction_type_set)",
+        "result=False\naccommodation_position=''\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_position=activity_position(activity)\nresult=(poi_distance(target_city(plan), '上海动物园', accommodation_position)<=23.917065377083368)",
+        "result=(day_count(plan)==2)",
+        "result=(people_count(plan)==1)",
+        "result=True\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['attraction', 'airplane', 'train'] and activity_tickets(activity)!=1: result=False\n  if innercity_transport_type(activity_transports(activity))=='metro'and metro_tickets(activity_transports(activity))!=1: result=False",
+        "result=True\nfor activity in allactivities(plan):\n  if innercity_transport_type(activity_transports(activity))=='taxi'and taxi_cars(activity_transports(activity))!=1: result=False"
+    ],
+    "nature_language": "我们1人，从深圳出发，到上海旅行2天，要求如下：\n希望游览商业街区 和 游乐园/体育娱乐 和 美术馆/艺术馆\n希望住宿地在上海动物园周围23.92千米内"
+}

@@ -1,0 +1,11 @@
+{
+    "uid": "20250322151936266737",
+    "start_city": "重庆",
+    "target_city": "苏州",
+    "days": 2,
+    "people_number": 3,
+    "hard_logic_py": [
+        "result_list=[]\nrestaurant_name_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['breakfast', 'lunch', 'dinner']: restaurant_name_set.add(activity_position(activity))\nresult=({\"蟹伙计蟹粉世家(山塘街店)\"}&restaurant_name_set)\nresult_list.append(result)\naccommodation_type_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_type_set.add(accommodation_type(activity, target_city(plan)))\nresult=({\"免费停车\"}&accommodation_type_set)\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们3人，从重庆出发，到苏州旅行2天，要求满足以下任意一个：\n1. 希望尝试以下餐厅之一： 蟹伙计蟹粉世家(山塘街店)\n2. 希望入住以下类型的酒店之一免费停车"
+}

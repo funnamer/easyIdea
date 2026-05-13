@@ -1,0 +1,11 @@
+{
+    "uid": "20250323121738195437",
+    "start_city": "苏州",
+    "target_city": "深圳",
+    "days": 3,
+    "people_number": 2,
+    "hard_logic_py": [
+        "result_list=[]\nresult=False\naccommodation_position=''\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_position=activity_position(activity)\nresult=(poi_distance(target_city(plan), '深圳音乐厅', accommodation_position)<=0.9431502745691651)\nresult_list.append(result)\nresult=True\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation' and room_type(activity)!=1: result=False\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们2人，从苏州出发，到深圳旅行3天，要求满足以下任意一个：\n1. 希望住宿地在深圳音乐厅周围0.95千米内\n2. 希望入住单床房"
+}

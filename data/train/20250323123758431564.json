@@ -1,0 +1,11 @@
+{
+    "uid": "20250323123758431564",
+    "start_city": "南京",
+    "target_city": "北京",
+    "days": 2,
+    "people_number": 5,
+    "hard_logic_py": [
+        "result_list=[]\ninner_city_transportation_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity)=='transportation': inner_city_transportation_set.add(activity_position(activity))\nresult=not({\"walk\", \"metro\"}&inner_city_transportation_set)\nresult_list.append(result)\nresult=False\naccommodation_position=''\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_position=activity_position(activity)\nresult=(poi_distance(target_city(plan), '幻境空间超级元宇宙(北京店)', accommodation_position)<=16.78320214043215)\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们5人，从南京出发，到北京旅行2天，要求满足以下任意一个：\n1. 不希望以walk 和 metro方式在城市内出行\n2. 希望住宿地在幻境空间超级元宇宙(北京店)周围16.79千米内"
+}

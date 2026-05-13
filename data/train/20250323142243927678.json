@@ -1,0 +1,11 @@
+{
+    "uid": "20250323142243927678",
+    "start_city": "南京",
+    "target_city": "深圳",
+    "days": 5,
+    "people_number": 5,
+    "hard_logic_py": [
+        "result_list=[]\ninner_city_transportation_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity)=='transportation': inner_city_transportation_set.add(activity_position(activity))\nresult=not({\"taxi\"}&inner_city_transportation_set)\nresult_list.append(result)\nresult=False\naccommodation_position=''\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_position=activity_position(activity)\nresult=(poi_distance(target_city(plan), '欢乐港湾', accommodation_position)<=3.570152249797341)\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们5人，从南京出发，到深圳旅行5天，要求满足以下任意一个：\n1. 不希望以taxi方式在城市内出行\n2. 希望住宿地在欢乐港湾周围3.58千米内"
+}

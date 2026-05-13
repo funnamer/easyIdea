@@ -1,0 +1,16 @@
+{
+    "uid": "20250323120827389434",
+    "start_city": "深圳",
+    "target_city": "上海",
+    "days": 2,
+    "people_number": 1,
+    "hard_logic_py": [
+        "restaurant_name_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['breakfast', 'lunch', 'dinner']: restaurant_name_set.add(activity_position(activity))\nresult=({\"上海王宝和大酒店·上海餐厅\", \"新光酒家方亮蟹宴(黄浦店)\", \"逸采EASEFUL CUISINE(静安店)\"}<=restaurant_name_set)",
+        "result=False\naccommodation_position=''\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_position=activity_position(activity)\nresult=(poi_distance(target_city(plan), '上生新所', accommodation_position)<=5.241426939047365)",
+        "result=(day_count(plan)==2)",
+        "result=(people_count(plan)==1)",
+        "result=True\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['attraction', 'airplane', 'train'] and activity_tickets(activity)!=1: result=False\n  if innercity_transport_type(activity_transports(activity))=='metro'and metro_tickets(activity_transports(activity))!=1: result=False",
+        "result=True\nfor activity in allactivities(plan):\n  if innercity_transport_type(activity_transports(activity))=='taxi'and taxi_cars(activity_transports(activity))!=1: result=False"
+    ],
+    "nature_language": "我们1人，从深圳出发，到上海旅行2天，要求如下：\n希望尝试以下餐厅：上海王宝和大酒店·上海餐厅 和 新光酒家方亮蟹宴(黄浦店) 和 逸采EASEFUL CUISINE(静安店)\n希望住宿地在上生新所周围5.25千米内"
+}

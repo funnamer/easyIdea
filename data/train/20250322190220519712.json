@@ -1,0 +1,11 @@
+{
+    "uid": "20250322190220519712",
+    "start_city": "武汉",
+    "target_city": "北京",
+    "days": 4,
+    "people_number": 4,
+    "hard_logic_py": [
+        "result_list=[]\nrestaurant_cost=0\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['breakfast', 'lunch', 'dinner']: restaurant_cost+=activity_cost(activity)\nresult=restaurant_cost<=2000\nresult_list.append(result)\nresult=False\nfor activity in allactivities(plan):\n  if activity_position(activity)=='玉渊潭公园':\n    if activity_end_time(activity)>='13:50':\n      result=True\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们4人，从武汉出发，到北京旅行4天，要求满足以下任意一个：\n1. 在用餐上的预算为2000.0\n2. 希望不早于13:50离开玉渊潭公园"
+}

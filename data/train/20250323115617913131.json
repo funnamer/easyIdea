@@ -1,0 +1,11 @@
+{
+    "uid": "20250323115617913131",
+    "start_city": "北京",
+    "target_city": "深圳",
+    "days": 3,
+    "people_number": 1,
+    "hard_logic_py": [
+        "result_list=[]\naccommodation_name_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_name_set.add(activity_position(activity))\nresult=({\"深圳南山芒果网大厦亚朵酒店\"}<=accommodation_name_set)\nresult_list.append(result)\nresult=False\naccommodation_position=''\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_position=activity_position(activity)\nresult=(poi_distance(target_city(plan), '深圳湾公园-运动公园', accommodation_position)<=3.924195440297946)\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们1人，从北京出发，到深圳旅行3天，要求满足以下任意一个：\n1. 希望入住以下酒店深圳南山芒果网大厦亚朵酒店\n2. 希望住宿地在深圳湾公园-运动公园周围3.93千米内"
+}

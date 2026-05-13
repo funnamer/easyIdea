@@ -1,0 +1,16 @@
+{
+    "uid": "20250323004256480142",
+    "start_city": "南京",
+    "target_city": "上海",
+    "days": 4,
+    "people_number": 5,
+    "hard_logic_py": [
+        "result=False\nintercity_transport_go=''\nintercity_transport_back=''\nif allactivities(plan)[0]['type'] == \"train\" and intercity_transport_origin(allactivities(plan)[0])==start_city(plan) and allactivities(plan)[-1]['type'] == \"train\" and intercity_transport_origin(allactivities(plan)[-1])==target_city(plan):\n  result=True",
+        "total_cost=0 \nfor activity in allactivities(plan):\n    total_cost+=activity_cost(activity)\n    total_cost += innercity_transport_cost(activity_transports(activity))\nresult=(total_cost<=37900)",
+        "result=(day_count(plan)==4)",
+        "result=(people_count(plan)==5)",
+        "result=True\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['attraction', 'airplane', 'train'] and activity_tickets(activity)!=5: result=False\n  if innercity_transport_type(activity_transports(activity))=='metro'and metro_tickets(activity_transports(activity))!=5: result=False",
+        "result=True\nfor activity in allactivities(plan):\n  if innercity_transport_type(activity_transports(activity))=='taxi'and taxi_cars(activity_transports(activity))!=2: result=False"
+    ],
+    "nature_language": "我们5人，从南京出发，到上海旅行4天，要求如下：\n希望乘坐train前往目的地，乘坐train返回\n在旅行上的总预算为37900.0"
+}

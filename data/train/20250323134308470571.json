@@ -1,0 +1,11 @@
+{
+    "uid": "20250323134308470571",
+    "start_city": "上海",
+    "target_city": "南京",
+    "days": 3,
+    "people_number": 2,
+    "hard_logic_py": [
+        "result_list=[]\ntotal_cost=0 \nfor activity in allactivities(plan):\n    total_cost+=activity_cost(activity)\n    total_cost += innercity_transport_cost(activity_transports(activity))\nresult=(total_cost<=2100)\nresult_list.append(result)\nresult=False\naccommodation_position=''\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_position=activity_position(activity)\nresult=(poi_distance(target_city(plan), '世界之窗', accommodation_position)<=2.143172493745594)\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们2人，从上海出发，到南京旅行3天，要求满足以下任意一个：\n1. 在旅行上的总预算为2100.0\n2. 希望住宿地在世界之窗周围2.15千米内"
+}

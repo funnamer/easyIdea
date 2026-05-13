@@ -1,0 +1,16 @@
+{
+    "uid": "20250322173733552524",
+    "start_city": "北京",
+    "target_city": "深圳",
+    "days": 3,
+    "people_number": 1,
+    "hard_logic_py": [
+        "restaurant_type_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['breakfast', 'lunch', 'dinner']: restaurant_type_set.add(restaurant_type(activity, target_city(plan)))\nresult=({\"粤菜\"}<=restaurant_type_set)",
+        "result=False\nfor activity in allactivities(plan):\n  if activity_position(activity)=='海边公园':\n    if activity_time(activity)>=90:\n      result=True",
+        "result=(day_count(plan)==3)",
+        "result=(people_count(plan)==1)",
+        "result=True\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['attraction', 'airplane', 'train'] and activity_tickets(activity)!=1: result=False\n  if innercity_transport_type(activity_transports(activity))=='metro'and metro_tickets(activity_transports(activity))!=1: result=False",
+        "result=True\nfor activity in allactivities(plan):\n  if innercity_transport_type(activity_transports(activity))=='taxi'and taxi_cars(activity_transports(activity))!=1: result=False"
+    ],
+    "nature_language": "我们1人，从北京出发，到深圳旅行3天，要求如下：\n希望尝试以下类型的餐厅粤菜\n希望在海边公园停留不少于90分钟"
+}

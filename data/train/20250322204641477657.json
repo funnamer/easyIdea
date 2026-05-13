@@ -1,0 +1,16 @@
+{
+    "uid": "20250322204641477657",
+    "start_city": "南京",
+    "target_city": "北京",
+    "days": 2,
+    "people_number": 5,
+    "hard_logic_py": [
+        "accommodation_name_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_name_set.add(activity_position(activity))\nresult=({\"秋果S酒店·1924(北京五棵松解放军301总医院店)\"}<=accommodation_name_set)",
+        "result=False\nfor activity in allactivities(plan):\n  if activity_position(activity)=='杨梅竹斜街':\n    if activity_start_time(activity)<='14:40' and activity_end_time(activity)>='16:10':\n      result=True",
+        "result=(day_count(plan)==2)",
+        "result=(people_count(plan)==5)",
+        "result=True\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['attraction', 'airplane', 'train'] and activity_tickets(activity)!=5: result=False\n  if innercity_transport_type(activity_transports(activity))=='metro'and metro_tickets(activity_transports(activity))!=5: result=False",
+        "result=True\nfor activity in allactivities(plan):\n  if innercity_transport_type(activity_transports(activity))=='taxi'and taxi_cars(activity_transports(activity))!=2: result=False"
+    ],
+    "nature_language": "我们5人，从南京出发，到北京旅行2天，要求如下：\n希望入住以下酒店秋果S酒店·1924(北京五棵松解放军301总医院店)\n希望在14:40到16:10之间游览杨梅竹斜街"
+}

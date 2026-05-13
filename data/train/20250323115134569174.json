@@ -1,0 +1,11 @@
+{
+    "uid": "20250323115134569174",
+    "start_city": "上海",
+    "target_city": "深圳",
+    "days": 4,
+    "people_number": 3,
+    "hard_logic_py": [
+        "result_list=[]\ninner_city_transportation_cost=0 \nfor activity in allactivities(plan):\n    inner_city_transportation_cost += innercity_transport_cost(activity_transports(activity))\nresult=(inner_city_transportation_cost<=110)\nresult_list.append(result)\nresult=False\naccommodation_position=''\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_position=activity_position(activity)\nresult=(poi_distance(target_city(plan), '华强北博物馆', accommodation_position)<=10.28786631059419)\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们3人，从上海出发，到深圳旅行4天，要求满足以下任意一个：\n1. 在城市内出行的预算为110.0\n2. 希望住宿地在华强北博物馆周围10.29千米内"
+}

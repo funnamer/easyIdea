@@ -1,0 +1,11 @@
+{
+    "uid": "20250323132032934223",
+    "start_city": "武汉",
+    "target_city": "上海",
+    "days": 4,
+    "people_number": 3,
+    "hard_logic_py": [
+        "result_list=[]\ninter_city_transportation_cost=0\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['airplane','train']: inter_city_transportation_cost+=activity_cost(activity)\nresult=inter_city_transportation_cost<=2400\nresult_list.append(result)\nresult=False\naccommodation_position=''\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_position=activity_position(activity)\nresult=(poi_distance(target_city(plan), '徐家汇书院', accommodation_position)<=8.985663539219813)\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们3人，从武汉出发，到上海旅行4天，要求满足以下任意一个：\n1. 跨城市交通的预算为2400.0\n2. 希望住宿地在徐家汇书院周围8.99千米内"
+}

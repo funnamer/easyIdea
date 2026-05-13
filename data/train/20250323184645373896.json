@@ -1,0 +1,11 @@
+{
+    "uid": "20250323184645373896",
+    "start_city": "苏州",
+    "target_city": "杭州",
+    "days": 4,
+    "people_number": 4,
+    "hard_logic_py": [
+        "result_list=[]\nrestaurant_type_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['breakfast', 'lunch', 'dinner']: restaurant_type_set.add(restaurant_type(activity, target_city(plan)))\nresult=({\"粤菜\"}&restaurant_type_set)\nresult_list.append(result)\nresult=False\nfor activity in allactivities(plan):\n  if activity_position(activity)=='太子湾公园':\n    if activity_end_time(activity)>='14:50':\n      result=True\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们4人，从苏州出发，到杭州旅行4天，要求满足以下任意一个：\n1. 希望尝试以下类型的餐厅之一粤菜\n2. 希望不早于14:50离开太子湾公园"
+}

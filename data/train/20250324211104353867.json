@@ -1,0 +1,11 @@
+{
+    "uid": "20250324211104353867",
+    "start_city": "广州",
+    "target_city": "武汉",
+    "days": 3,
+    "people_number": 1,
+    "hard_logic_py": [
+        "result_list=[]\ninner_city_transportation_cost=0 \nfor activity in allactivities(plan):\n    inner_city_transportation_cost += innercity_transport_cost(activity_transports(activity))\nresult=(inner_city_transportation_cost<=40)\nresult_list.append(result)\nresult=False\nfor activity in allactivities(plan):\n  if activity_position(activity)=='户部巷':\n    if activity_end_time(activity)>='13:50':\n      result=True\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们1人，从广州出发，到武汉旅行3天，要求满足以下任意一个：\n1. 在城市内出行的预算为40.0\n2. 希望不早于13:50离开户部巷"
+}

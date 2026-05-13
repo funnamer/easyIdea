@@ -1,0 +1,16 @@
+{
+    "uid": "20250323144854730036",
+    "start_city": "深圳",
+    "target_city": "上海",
+    "days": 2,
+    "people_number": 1,
+    "hard_logic_py": [
+        "result=False\nfor activity in allactivities(plan):\n  if activity_position(activity)=='福和慧':\n    if activity_start_time(activity)<='17:00' and activity_end_time(activity)>='17:50':\n      result=True",
+        "result=False\naccommodation_position=''\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_position=activity_position(activity)\nresult=(poi_distance(target_city(plan), '威尼斯小镇', accommodation_position)<=16.0753209577418)",
+        "result=(day_count(plan)==2)",
+        "result=(people_count(plan)==1)",
+        "result=True\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['attraction', 'airplane', 'train'] and activity_tickets(activity)!=1: result=False\n  if innercity_transport_type(activity_transports(activity))=='metro'and metro_tickets(activity_transports(activity))!=1: result=False",
+        "result=True\nfor activity in allactivities(plan):\n  if innercity_transport_type(activity_transports(activity))=='taxi'and taxi_cars(activity_transports(activity))!=1: result=False"
+    ],
+    "nature_language": "我们1人，从深圳出发，到上海旅行2天，要求如下：\n希望在17:00到17:50之间游览福和慧\n希望住宿地在威尼斯小镇周围16.08千米内"
+}

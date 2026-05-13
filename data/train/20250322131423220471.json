@@ -1,0 +1,11 @@
+{
+    "uid": "20250322131423220471",
+    "start_city": "深圳",
+    "target_city": "上海",
+    "days": 3,
+    "people_number": 4,
+    "hard_logic_py": [
+        "result_list=[]\nattraction_type_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity)=='attraction': attraction_type_set.add(attraction_type(activity, target_city(plan)))\nresult=({\"商业街区\", \"游乐园/体育娱乐\", \"美术馆/艺术馆\"}<=attraction_type_set)\nresult_list.append(result)\nresult=False\nfor activity in allactivities(plan):\n  if activity_position(activity)=='上生新所':\n    if activity_end_time(activity)>='14:00':\n      result=True\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们4人，从深圳出发，到上海旅行3天，要求满足以下任意一个：\n1. 希望游览商业街区 和 游乐园/体育娱乐 和 美术馆/艺术馆\n2. 希望不早于14:00离开上生新所"
+}

@@ -1,0 +1,16 @@
+{
+    "uid": "20250323114048262328",
+    "start_city": "深圳",
+    "target_city": "上海",
+    "days": 2,
+    "people_number": 1,
+    "hard_logic_py": [
+        "restaurant_name_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['breakfast', 'lunch', 'dinner']: restaurant_name_set.add(activity_position(activity))\nresult=({\"御宝轩(益丰·外滩源店)\", \"京云华烤鸭·点心(新世界店)\", \"O'mills Sourdough Bakery&Bistro(永嘉路店)\"}<=restaurant_name_set)",
+        "result=False\naccommodation_position=''\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_position=activity_position(activity)\nresult=(poi_distance(target_city(plan), '上海交通大学', accommodation_position)<=6.811035906029765)",
+        "result=(day_count(plan)==2)",
+        "result=(people_count(plan)==1)",
+        "result=True\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['attraction', 'airplane', 'train'] and activity_tickets(activity)!=1: result=False\n  if innercity_transport_type(activity_transports(activity))=='metro'and metro_tickets(activity_transports(activity))!=1: result=False",
+        "result=True\nfor activity in allactivities(plan):\n  if innercity_transport_type(activity_transports(activity))=='taxi'and taxi_cars(activity_transports(activity))!=1: result=False"
+    ],
+    "nature_language": "我们1人，从深圳出发，到上海旅行2天，要求如下：\n希望尝试以下餐厅：御宝轩(益丰·外滩源店) 和 京云华烤鸭·点心(新世界店) 和 O'mills Sourdough Bakery&Bistro(永嘉路店)\n希望住宿地在上海交通大学周围6.82千米内"
+}

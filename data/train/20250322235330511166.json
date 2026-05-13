@@ -1,0 +1,11 @@
+{
+    "uid": "20250322235330511166",
+    "start_city": "上海",
+    "target_city": "深圳",
+    "days": 4,
+    "people_number": 3,
+    "hard_logic_py": [
+        "result_list=[]\ninner_city_transportation_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity)=='transportation': inner_city_transportation_set.add(activity_position(activity))\nresult=not({\"taxi\"}&inner_city_transportation_set)\nresult_list.append(result)\nresult=True\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation' and room_type(activity)!=1: result=False\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们3人，从上海出发，到深圳旅行4天，要求满足以下任意一个：\n1. 不希望以taxi方式在城市内出行\n2. 希望入住单床房"
+}

@@ -1,0 +1,11 @@
+{
+    "uid": "20250322213031579719",
+    "start_city": "杭州",
+    "target_city": "成都",
+    "days": 2,
+    "people_number": 3,
+    "hard_logic_py": [
+        "result_list=[]\naccommodation_name_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_name_set.add(activity_position(activity))\nresult=({\"成都东方美豪丽致酒店\"}<=accommodation_name_set)\nresult_list.append(result)\nresult=False\nfor activity in allactivities(plan):\n  if activity_position(activity)=='美洲四季滑雪场':\n    if activity_end_time(activity)>='16:10':\n      result=True\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们3人，从杭州出发，到成都旅行2天，要求满足以下任意一个：\n1. 希望入住以下酒店成都东方美豪丽致酒店\n2. 希望不早于16:10离开美洲四季滑雪场"
+}

@@ -1,0 +1,11 @@
+{
+    "uid": "20250322211359479833",
+    "start_city": "南京",
+    "target_city": "苏州",
+    "days": 3,
+    "people_number": 5,
+    "hard_logic_py": [
+        "result_list=[]\naccommodation_type_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_type_set.add(accommodation_type(activity, target_city(plan)))\nresult=({\"免费停车\"}&accommodation_type_set)\nresult_list.append(result)\naccommodation_cost=0\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_cost+=activity_cost(activity)\nresult=accommodation_cost<=4400\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们5人，从南京出发，到苏州旅行3天，要求满足以下任意一个：\n1. 希望入住以下类型的酒店之一免费停车\n2. 在住宿上的预算为4400.0"
+}

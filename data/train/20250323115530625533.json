@@ -1,0 +1,11 @@
+{
+    "uid": "20250323115530625533",
+    "start_city": "南京",
+    "target_city": "重庆",
+    "days": 4,
+    "people_number": 4,
+    "hard_logic_py": [
+        "result_list=[]\naccommodation_name_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_name_set.add(activity_position(activity))\nresult=({\"重庆浅憩In酒店\"}<=accommodation_name_set)\nresult_list.append(result)\nresult=False\naccommodation_position=''\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_position=activity_position(activity)\nresult=(poi_distance(target_city(plan), '洪崖洞重逢1980街区', accommodation_position)<=2.831909476255356)\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们4人，从南京出发，到重庆旅行4天，要求满足以下任意一个：\n1. 希望入住以下酒店重庆浅憩In酒店\n2. 希望住宿地在洪崖洞重逢1980街区周围2.84千米内"
+}

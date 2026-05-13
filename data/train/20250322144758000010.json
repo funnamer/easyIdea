@@ -1,0 +1,16 @@
+{
+    "uid": "20250322144758000010",
+    "start_city": "上海",
+    "target_city": "深圳",
+    "days": 4,
+    "people_number": 3,
+    "hard_logic_py": [
+        "restaurant_name_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['breakfast', 'lunch', 'dinner']: restaurant_name_set.add(activity_position(activity))\nresult=not({\"大無烧肉(卓悦中心店)\"}&restaurant_name_set)",
+        "accommodation_name_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_name_set.add(activity_position(activity))\nresult=not({\"深圳海岸城购物中心南山地铁站亚朵酒店\", \"深圳慢可可海景别墅(较场尾海岸线店)\"}&accommodation_name_set)",
+        "result=(day_count(plan)==4)",
+        "result=(people_count(plan)==3)",
+        "result=True\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['attraction', 'airplane', 'train'] and activity_tickets(activity)!=3: result=False\n  if innercity_transport_type(activity_transports(activity))=='metro'and metro_tickets(activity_transports(activity))!=3: result=False",
+        "result=True\nfor activity in allactivities(plan):\n  if innercity_transport_type(activity_transports(activity))=='taxi'and taxi_cars(activity_transports(activity))!=1: result=False"
+    ],
+    "nature_language": "我们3人，从上海出发，到深圳旅行4天，要求如下：\n不希望尝试以下餐厅：大無烧肉(卓悦中心店)\n不希望入住以下酒店深圳海岸城购物中心南山地铁站亚朵酒店 和 深圳慢可可海景别墅(较场尾海岸线店)"
+}

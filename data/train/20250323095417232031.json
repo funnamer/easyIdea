@@ -1,0 +1,11 @@
+{
+    "uid": "20250323095417232031",
+    "start_city": "深圳",
+    "target_city": "上海",
+    "days": 3,
+    "people_number": 4,
+    "hard_logic_py": [
+        "result_list=[]\nattraction_type_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity)=='attraction': attraction_type_set.add(attraction_type(activity, target_city(plan)))\nresult=({\"博物馆/纪念馆\", \"公园\", \"历史古迹\"}<=attraction_type_set)\nresult_list.append(result)\nresult=False\naccommodation_position=''\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_position=activity_position(activity)\nresult=(poi_distance(target_city(plan), '国际乒联博物馆和中国乒乓球博物馆', accommodation_position)<=4.6328349916423655)\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们4人，从深圳出发，到上海旅行3天，要求满足以下任意一个：\n1. 希望游览博物馆/纪念馆 和 公园 和 历史古迹\n2. 希望住宿地在国际乒联博物馆和中国乒乓球博物馆周围4.64千米内"
+}

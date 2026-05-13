@@ -1,0 +1,11 @@
+{
+    "uid": "20250323110814890860",
+    "start_city": "南京",
+    "target_city": "苏州",
+    "days": 3,
+    "people_number": 2,
+    "hard_logic_py": [
+        "result_list=[]\nrestaurant_type_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['breakfast', 'lunch', 'dinner']: restaurant_type_set.add(restaurant_type(activity, target_city(plan)))\nresult=not({\"新疆菜\", \"烧烤\"}&restaurant_type_set)\nresult_list.append(result)\nresult=False\naccommodation_position=''\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_position=activity_position(activity)\nresult=(poi_distance(target_city(plan), '苏州古运河', accommodation_position)<=9.767551147370844)\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们2人，从南京出发，到苏州旅行3天，要求满足以下任意一个：\n1. 不希望尝试以下类型的餐厅新疆菜 和 烧烤\n2. 希望住宿地在苏州古运河周围9.77千米内"
+}

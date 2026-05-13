@@ -1,0 +1,11 @@
+{
+    "uid": "20250324195510455666",
+    "start_city": "南京",
+    "target_city": "杭州",
+    "days": 3,
+    "people_number": 4,
+    "hard_logic_py": [
+        "result_list=[]\nrestaurant_cost=0\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['breakfast', 'lunch', 'dinner']: restaurant_cost+=activity_cost(activity)\nresult=restaurant_cost<=2800\nresult_list.append(result)\naccommodation_name_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_name_set.add(activity_position(activity))\nresult=({\"杭州西湖闲处民宿(太子湾店)\"}<=accommodation_name_set)\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们4人，从南京出发，到杭州旅行3天，要求满足以下任意一个：\n1. 在用餐上的预算为2800.0\n2. 希望入住以下酒店杭州西湖闲处民宿(太子湾店)"
+}

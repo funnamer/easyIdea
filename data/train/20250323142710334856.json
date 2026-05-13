@@ -1,0 +1,11 @@
+{
+    "uid": "20250323142710334856",
+    "start_city": "北京",
+    "target_city": "深圳",
+    "days": 3,
+    "people_number": 1,
+    "hard_logic_py": [
+        "result_list=[]\nresult=False\nfor activity in allactivities(plan):\n  if activity_position(activity)=='深圳妇儿大厦-儿童探索馆':\n    if activity_end_time(activity)>='13:50':\n      result=True\nresult_list.append(result)\nresult=False\naccommodation_position=''\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_position=activity_position(activity)\nresult=(poi_distance(target_city(plan), '香蜜湖', accommodation_position)<=7.664948043209985)\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们1人，从北京出发，到深圳旅行3天，要求满足以下任意一个：\n1. 希望不早于13:50离开深圳妇儿大厦-儿童探索馆\n2. 希望住宿地在香蜜湖周围7.67千米内"
+}

@@ -1,0 +1,11 @@
+{
+    "uid": "20250322213612675649",
+    "start_city": "苏州",
+    "target_city": "杭州",
+    "days": 4,
+    "people_number": 4,
+    "hard_logic_py": [
+        "result_list=[]\naccommodation_type_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_type_set.add(accommodation_type(activity, target_city(plan)))\nresult=({\"泳池\"}<=accommodation_type_set)\nresult_list.append(result)\nresult=True\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation' and room_type(activity)!=2: result=False\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们4人，从苏州出发，到杭州旅行4天，要求满足以下任意一个：\n1. 希望入住以下类型的酒店泳池\n2. 希望入住双床房"
+}

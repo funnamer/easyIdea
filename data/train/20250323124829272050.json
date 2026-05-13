@@ -1,0 +1,11 @@
+{
+    "uid": "20250323124829272050",
+    "start_city": "上海",
+    "target_city": "苏州",
+    "days": 5,
+    "people_number": 5,
+    "hard_logic_py": [
+        "result_list=[]\ntotal_cost=0 \nfor activity in allactivities(plan):\n    total_cost+=activity_cost(activity)\n    total_cost += innercity_transport_cost(activity_transports(activity))\nresult=(total_cost<=11800)\nresult_list.append(result)\nresult=False\naccommodation_position=''\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_position=activity_position(activity)\nresult=(poi_distance(target_city(plan), '苏州恋爱博物馆(平江路店)', accommodation_position)<=11.573640968074283)\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们5人，从上海出发，到苏州旅行5天，要求满足以下任意一个：\n1. 在旅行上的总预算为11800.0\n2. 希望住宿地在苏州恋爱博物馆(平江路店)周围11.58千米内"
+}

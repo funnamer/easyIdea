@@ -1,0 +1,11 @@
+{
+    "uid": "20250324010642549077",
+    "start_city": "苏州",
+    "target_city": "杭州",
+    "days": 4,
+    "people_number": 4,
+    "hard_logic_py": [
+        "result_list=[]\nresult=False\nintercity_transport_go=''\nintercity_transport_back=''\nif allactivities(plan)[0]['type'] == \"train\" and intercity_transport_origin(allactivities(plan)[0])==start_city(plan) and allactivities(plan)[-1]['type'] == \"train\" and intercity_transport_origin(allactivities(plan)[-1])==target_city(plan):\n  result=True\nresult_list.append(result)\nresult=False\nfor activity in allactivities(plan):\n  if activity_position(activity)=='杭州运河游船':\n    if activity_end_time(activity)>='13:50':\n      result=True\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们4人，从苏州出发，到杭州旅行4天，要求满足以下任意一个：\n1. 希望乘坐train前往目的地，乘坐train返回\n2. 希望不早于13:50离开杭州运河游船"
+}

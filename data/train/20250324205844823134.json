@@ -1,0 +1,16 @@
+{
+    "uid": "20250324205844823134",
+    "start_city": "深圳",
+    "target_city": "上海",
+    "days": 3,
+    "people_number": 3,
+    "hard_logic_py": [
+        "accommodation_name_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_name_set.add(activity_position(activity))\nresult=not({\"上海梯加酒店\", \"上海大宁国际亚朵酒店\"}&accommodation_name_set)",
+        "accommodation_cost=0\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_cost+=activity_cost(activity)\nresult=accommodation_cost<=3300",
+        "result=(day_count(plan)==3)",
+        "result=(people_count(plan)==3)",
+        "result=True\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['attraction', 'airplane', 'train'] and activity_tickets(activity)!=3: result=False\n  if innercity_transport_type(activity_transports(activity))=='metro'and metro_tickets(activity_transports(activity))!=3: result=False",
+        "result=True\nfor activity in allactivities(plan):\n  if innercity_transport_type(activity_transports(activity))=='taxi'and taxi_cars(activity_transports(activity))!=1: result=False"
+    ],
+    "nature_language": "我们3人，从深圳出发，到上海旅行3天，要求如下：\n不希望入住以下酒店上海梯加酒店 和 上海大宁国际亚朵酒店\n在住宿上的预算为3300.0"
+}

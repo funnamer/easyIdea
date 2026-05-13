@@ -1,0 +1,11 @@
+{
+    "uid": "20250324214846150403",
+    "start_city": "武汉",
+    "target_city": "苏州",
+    "days": 5,
+    "people_number": 4,
+    "hard_logic_py": [
+        "result_list=[]\naccommodation_type_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_type_set.add(accommodation_type(activity, target_city(plan)))\nresult=({\"湖畔美居\"}&accommodation_type_set)\nresult_list.append(result)\nresult=True\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation' and room_type(activity)!=1: result=False\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们4人，从武汉出发，到苏州旅行5天，要求满足以下任意一个：\n1. 希望入住以下类型的酒店之一湖畔美居\n2. 希望入住单床房"
+}

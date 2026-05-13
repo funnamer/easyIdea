@@ -1,0 +1,16 @@
+{
+    "uid": "20250322135236498324",
+    "start_city": "深圳",
+    "target_city": "上海",
+    "days": 3,
+    "people_number": 4,
+    "hard_logic_py": [
+        "restaurant_name_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['breakfast', 'lunch', 'dinner']: restaurant_name_set.add(activity_position(activity))\nresult=({\"乐意坊 Alla Torre 意大利手工披萨 (缤谷店)\", \"金时代顺风港湾(爱琴海购物中心店)\", \"小山日本料理(兴业太古汇店)\"}<=restaurant_name_set)",
+        "restaurant_cost=0\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['breakfast', 'lunch', 'dinner']: restaurant_cost+=activity_cost(activity)\nresult=restaurant_cost<=3100",
+        "result=(day_count(plan)==3)",
+        "result=(people_count(plan)==4)",
+        "result=True\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['attraction', 'airplane', 'train'] and activity_tickets(activity)!=4: result=False\n  if innercity_transport_type(activity_transports(activity))=='metro'and metro_tickets(activity_transports(activity))!=4: result=False",
+        "result=True\nfor activity in allactivities(plan):\n  if innercity_transport_type(activity_transports(activity))=='taxi'and taxi_cars(activity_transports(activity))!=1: result=False"
+    ],
+    "nature_language": "我们4人，从深圳出发，到上海旅行3天，要求如下：\n希望尝试以下餐厅：乐意坊 Alla Torre 意大利手工披萨 (缤谷店) 和 金时代顺风港湾(爱琴海购物中心店) 和 小山日本料理(兴业太古汇店)\n在用餐上的预算为3100.0"
+}

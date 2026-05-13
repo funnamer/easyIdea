@@ -1,0 +1,16 @@
+{
+    "uid": "20250324220251052121",
+    "start_city": "重庆",
+    "target_city": "成都",
+    "days": 5,
+    "people_number": 5,
+    "hard_logic_py": [
+        "accommodation_name_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_name_set.add(activity_position(activity))\nresult=not({\"成都太古泊悅汇套房服务式公寓\", \"成都宽窄巷子奎星楼街亚朵X酒店\"}&accommodation_name_set)",
+        "accommodation_type_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_type_set.add(accommodation_type(activity, target_city(plan)))\nresult=not({\"自营亲子房\"}&accommodation_type_set)",
+        "result=(day_count(plan)==5)",
+        "result=(people_count(plan)==5)",
+        "result=True\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['attraction', 'airplane', 'train'] and activity_tickets(activity)!=5: result=False\n  if innercity_transport_type(activity_transports(activity))=='metro'and metro_tickets(activity_transports(activity))!=5: result=False",
+        "result=True\nfor activity in allactivities(plan):\n  if innercity_transport_type(activity_transports(activity))=='taxi'and taxi_cars(activity_transports(activity))!=2: result=False"
+    ],
+    "nature_language": "我们5人，从重庆出发，到成都旅行5天，要求如下：\n不希望入住以下酒店成都太古泊悅汇套房服务式公寓 和 成都宽窄巷子奎星楼街亚朵X酒店\n不希望入住以下类型的酒店自营亲子房"
+}

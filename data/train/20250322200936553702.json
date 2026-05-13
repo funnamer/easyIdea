@@ -1,0 +1,16 @@
+{
+    "uid": "20250322200936553702",
+    "start_city": "重庆",
+    "target_city": "武汉",
+    "days": 5,
+    "people_number": 3,
+    "hard_logic_py": [
+        "accommodation_name_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_name_set.add(activity_position(activity))\nresult=({\"禾木民宿(武汉东湖风景区店)\"}<=accommodation_name_set)",
+        "result=False\nidx_activity0=0\nidx_activity1=0\ni=0\nfor activity in allactivities(plan):\n  if activity_position(activity)=='光谷国际网球中心':\n    idx_activity0=i\n  if activity_position(activity)=='The boots 泥靴 & MINI(光谷店)':\n    idx_activity1=i\n  i+=1\nif idx_activity0<idx_activity1:\n  result=True",
+        "result=(day_count(plan)==5)",
+        "result=(people_count(plan)==3)",
+        "result=True\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['attraction', 'airplane', 'train'] and activity_tickets(activity)!=3: result=False\n  if innercity_transport_type(activity_transports(activity))=='metro'and metro_tickets(activity_transports(activity))!=3: result=False",
+        "result=True\nfor activity in allactivities(plan):\n  if innercity_transport_type(activity_transports(activity))=='taxi'and taxi_cars(activity_transports(activity))!=1: result=False"
+    ],
+    "nature_language": "我们3人，从重庆出发，到武汉旅行5天，要求如下：\n希望入住以下酒店禾木民宿(武汉东湖风景区店)\n希望先去光谷国际网球中心，再去The boots 泥靴 & MINI(光谷店)"
+}

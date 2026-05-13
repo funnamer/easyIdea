@@ -1,0 +1,11 @@
+{
+    "uid": "20250323113047535258",
+    "start_city": "成都",
+    "target_city": "深圳",
+    "days": 2,
+    "people_number": 2,
+    "hard_logic_py": [
+        "result_list=[]\nattraction_name_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity)=='attraction': attraction_name_set.add(activity_position(activity))\nresult=not({\"华强北博物馆\", \"虹桥公园\"}&attraction_name_set)\nresult_list.append(result)\nresult=False\naccommodation_position=''\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_position=activity_position(activity)\nresult=(poi_distance(target_city(plan), '深圳机场码头游船', accommodation_position)<=28.088975656236617)\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们2人，从成都出发，到深圳旅行2天，要求满足以下任意一个：\n1. 不希望游览华强北博物馆 和 虹桥公园\n2. 希望住宿地在深圳机场码头游船周围28.09千米内"
+}

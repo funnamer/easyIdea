@@ -1,0 +1,11 @@
+{
+    "uid": "20250322141716326290",
+    "start_city": "苏州",
+    "target_city": "南京",
+    "days": 2,
+    "people_number": 3,
+    "hard_logic_py": [
+        "result_list=[]\nattraction_cost=0\nfor activity in allactivities(plan):\n  if activity_type(activity)=='attraction': attraction_cost+=activity_cost(activity)\nresult=attraction_cost<=0\nresult_list.append(result)\nresult=False\nfor activity in allactivities(plan):\n  if activity_position(activity)=='南京1912街':\n    if activity_end_time(activity)>='15:50':\n      result=True\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们3人，从苏州出发，到南京旅行2天，要求满足以下任意一个：\n1. 希望只游览免费景点\n2. 希望不早于15:50离开南京1912街"
+}

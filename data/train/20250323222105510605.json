@@ -1,0 +1,11 @@
+{
+    "uid": "20250323222105510605",
+    "start_city": "武汉",
+    "target_city": "成都",
+    "days": 2,
+    "people_number": 2,
+    "hard_logic_py": [
+        "result_list=[]\nrestaurant_cost=0\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['breakfast', 'lunch', 'dinner']: restaurant_cost+=activity_cost(activity)\nresult=restaurant_cost<=700\nresult_list.append(result)\nresult=False\nfor activity in allactivities(plan):\n  if activity_position(activity)=='天府绿道':\n    if activity_end_time(activity)>='13:50':\n      result=True\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们2人，从武汉出发，到成都旅行2天，要求满足以下任意一个：\n1. 在用餐上的预算为700.0\n2. 希望不早于13:50离开天府绿道"
+}

@@ -1,0 +1,11 @@
+{
+    "uid": "20250322153722831910",
+    "start_city": "成都",
+    "target_city": "武汉",
+    "days": 4,
+    "people_number": 3,
+    "hard_logic_py": [
+        "result_list=[]\nrestaurant_name_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['breakfast', 'lunch', 'dinner']: restaurant_name_set.add(activity_position(activity))\nresult=({\"巴厘龙虾(青山店)\"}&restaurant_name_set)\nresult_list.append(result)\naccommodation_cost=0\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_cost+=activity_cost(activity)\nresult=accommodation_cost<=3200\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们3人，从成都出发，到武汉旅行4天，要求满足以下任意一个：\n1. 希望尝试以下餐厅之一： 巴厘龙虾(青山店)\n2. 在住宿上的预算为3200.0"
+}

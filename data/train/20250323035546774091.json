@@ -1,0 +1,11 @@
+{
+    "uid": "20250323035546774091",
+    "start_city": "南京",
+    "target_city": "北京",
+    "days": 2,
+    "people_number": 5,
+    "hard_logic_py": [
+        "result_list=[]\nresult=False\nfor activity in allactivities(plan):\n  if activity_position(activity)=='明城墙遗址公园':\n    if activity_end_time(activity)>='16:10':\n      result=True\nresult_list.append(result)\nresult=True\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation' and room_type(activity)!=1: result=False\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们5人，从南京出发，到北京旅行2天，要求满足以下任意一个：\n1. 希望不早于16:10离开明城墙遗址公园\n2. 希望入住单床房"
+}

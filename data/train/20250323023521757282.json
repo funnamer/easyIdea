@@ -1,0 +1,11 @@
+{
+    "uid": "20250323023521757282",
+    "start_city": "成都",
+    "target_city": "深圳",
+    "days": 3,
+    "people_number": 2,
+    "hard_logic_py": [
+        "result_list=[]\nresult=False\nintercity_transport_go=''\nintercity_transport_back=''\nif allactivities(plan)[0]['type'] != \"airplane\" and intercity_transport_origin(allactivities(plan)[0])==start_city(plan) and allactivities(plan)[-1]['type'] != \"train\" and intercity_transport_origin(allactivities(plan)[-1])==target_city(plan):\n  result=True\nresult_list.append(result)\nresult=False\nfor activity in allactivities(plan):\n  if activity_position(activity)=='香蜜湖':\n    if activity_end_time(activity)>='13:50':\n      result=True\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们2人，从成都出发，到深圳旅行3天，要求满足以下任意一个：\n1. 不希望乘坐airplane前往目的地，不希望乘坐train返回\n2. 希望不早于13:50离开香蜜湖"
+}

@@ -1,0 +1,11 @@
+{
+    "uid": "20250323093618797348",
+    "start_city": "成都",
+    "target_city": "深圳",
+    "days": 3,
+    "people_number": 2,
+    "hard_logic_py": [
+        "result_list=[]\naccommodation_name_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_name_set.add(activity_position(activity))\nresult=({\"麗枫酒店(深圳南山科技园万科云城店)\"}<=accommodation_name_set)\nresult_list.append(result)\nresult=False\naccommodation_position=''\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_position=activity_position(activity)\nresult=(poi_distance(target_city(plan), '宝安公园', accommodation_position)<=4.147979495644686)\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们2人，从成都出发，到深圳旅行3天，要求满足以下任意一个：\n1. 希望入住以下酒店麗枫酒店(深圳南山科技园万科云城店)\n2. 希望住宿地在宝安公园周围4.15千米内"
+}
