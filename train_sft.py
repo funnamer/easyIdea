@@ -81,7 +81,7 @@ swanlab_callback = SwanLabCallback(
     config={
         "lora_r": 16,
         "lora_alpha": 32,
-        "model": "Qwen3-4B"
+        "model": "./model/Qwen/Qwen3-8B"
     }
 )
 

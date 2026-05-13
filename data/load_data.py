@@ -155,7 +155,7 @@ SYS_PROMPT = f"""
 
 # 获取当前脚本所在目录的父目录(项目根目录)
 current_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-model_id = os.path.join(current_dir, "model", "Qwen", "Qwen3-4B")
+model_id = os.path.join(current_dir, "model", "Qwen", "Qwen3-8B")
 # 注意：train_sft.py 会从这里导入 tokenizer，所以这行保持不变
 tokenizer = AutoTokenizer.from_pretrained(model_id, local_files_only=True)
 
