@@ -33,7 +33,7 @@ from data.load_data import processed_dataset, tokenizer, model_id
 # ================= 2. 基础配置 =================
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
-output_dir = os.path.join(current_dir,"/qwen-dsl-qlora-output")
+output_dir = os.path.join(current_dir,"qwen-dsl-qlora-output")
 
 if tokenizer.pad_token is None:
     tokenizer.pad_token = tokenizer.eos_token
@@ -51,6 +51,7 @@ print_main("🚀 正在以 Q4 模式加载基础模型...")
 model = AutoModelForCausalLM.from_pretrained(
     model_id,
     quantization_config=bnb_config,
+    torch_dtype=torch.bfloat16,
     # device_map="auto", # 【关键】多卡 DeepSpeed 必须注释掉这一行！
     local_files_only=True
 )

@@ -7,3 +7,7 @@ python -m accelerate.commands.launch \
   --deepspeed_config_file ds_config.json \
   train_sft.py
 ```
+
+```bash
+pip install torch transformers datasets accelerate peft trl bitsandbytes deepspeed python-dotenv swanlab -i https://pypi.tuna.tsinghua.edu.cn/simple
+```

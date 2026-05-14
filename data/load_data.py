@@ -162,10 +162,9 @@ def format_to_messages(example):
     """
     将单条原始数据转换为标准的 Messages 格式
     """
-    user_content = example.get("nature_language", "")
-    target_list = example.get("hard_logic_py", [])
+    user_content = example.get("nature_language")
+    target_list = example.get("hard_logic_py")
 
-    # 格式化 JSON 输出
     assistant_content = json.dumps(target_list, ensure_ascii=False, indent=4)
 
     messages = [
@@ -182,7 +181,7 @@ def load_and_prepare_dataset(model_path, data_path):
     """
     # 1. 加载 Tokenizer
     tokenizer = AutoTokenizer.from_pretrained(model_path, local_files_only=True)
-
+    tokenizer.padding_side = 'right'
     # 2. 加载原始数据集
     raw_dataset = load_dataset("json", data_files=data_path, split="train")
 

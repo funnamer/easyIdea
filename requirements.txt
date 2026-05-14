@@ -1,0 +1,21 @@
+# 核心深度学习框架
+torch
+
+# Hugging Face 生态系统
+transformers
+datasets
+accelerate
+peft
+trl
+
+# 量化训练支持
+bitsandbytes
+
+# 分布式训练
+deepspeed
+
+# 环境配置
+python-dotenv
+
+# 实验追踪
+swanlab
