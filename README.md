@@ -11,3 +11,7 @@ python -m accelerate.commands.launch \
 ```bash
 pip install torch transformers datasets accelerate peft trl bitsandbytes deepspeed python-dotenv swanlab -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
+
+```bash
+python data/load_data.py
+```

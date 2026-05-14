@@ -13,22 +13,30 @@ from trl import SFTTrainer, SFTConfig
 from dotenv import load_dotenv
 _=load_dotenv()
 
-# ================= 0. SwanLab 集成 =================
-# 导入 SwanLab 的 HuggingFace 专属回调函数
+# ================= 0. SwanLab 与 Accelerate 集成 =================
 from swanlab.integration.transformers import SwanLabCallback
+from accelerate import PartialState # 👈 新增：引入 Accelerate 的状态管理
 
-# 获取当前设备的 local rank，用于多卡时只让主卡(rank 0)打印日志，避免满屏重复
-local_rank = int(os.environ.get("LOCAL_RANK", 0))
-
+# 初始化分布式状态
+state = PartialState()
+local_rank = state.local_process_index # 👈 修改：用 state 获取 rank 更安全
 
 def print_main(*args, **kwargs):
     if local_rank == 0:
         print(*args, **kwargs)
 
-
 # ================= 1. 导入数据与 Tokenizer =================
 print_main("正在执行数据加载模块...")
-from data.load_data import processed_dataset, tokenizer, model_id
+# 👈 修改：只导入函数和常量，不再导入 processed_dataset
+from data.load_data import load_and_prepare_dataset, DATA_PATH, MODEL_ID
+
+# 👈 核心修复：使用上下文管理器。主卡进去处理，副卡在外面排队等候
+with state.local_main_process_first():
+    print_main("等待主进程检查/生成数据缓存...")
+    processed_dataset, tokenizer = load_and_prepare_dataset(MODEL_ID, DATA_PATH)
+
+# （注：请确保你第3步加载模型时，用的是这里大写的 MODEL_ID）
+# model = AutoModelForCausalLM.from_pretrained(MODEL_ID, ...)
 
 # ================= 2. 基础配置 =================
 current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -49,7 +57,7 @@ bnb_config = BitsAndBytesConfig(
 
 print_main("🚀 正在以 Q4 模式加载基础模型...")
 model = AutoModelForCausalLM.from_pretrained(
-    model_id,
+    MODEL_ID,
     quantization_config=bnb_config,
     torch_dtype=torch.bfloat16,
     # device_map="auto", # 【关键】多卡 DeepSpeed 必须注释掉这一行！

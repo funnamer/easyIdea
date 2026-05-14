@@ -198,22 +198,21 @@ def load_and_prepare_dataset(model_path, data_path):
     return processed, tokenizer
 
 
-_current_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-_data_path = os.path.join(_current_dir,"data","train", "*.json")
+# --- 替换为以下代码 ---
+# 将路径和模型ID作为常量暴露出去，但不执行处理函数
+CURRENT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DATA_PATH = os.path.join(CURRENT_DIR, "data", "train", "*.json")
+MODEL_ID = os.environ.get("MODEL_PATH")
 
-print(_data_path)
-model_id = os.environ.get("MODEL_PATH")
-if not model_id:
-    raise EnvironmentError(
-        "未设置 MODEL_PATH 环境变量！请设置模型的绝对路径，例如：\n"
-        "export MODEL_PATH=/root/autodl-tmp/model/Qwen/Qwen3-8B"
-    )
-
-
-processed_dataset, tokenizer = load_and_prepare_dataset(model_id, _data_path)
-
+# 只有当你单独运行 python load_data.py 时，才会执行下面的测试代码
 if __name__ == "__main__":
-    print(f"\n✅ 成功加载模型: {model_id}")
+    if not MODEL_ID:
+        raise EnvironmentError("未设置 MODEL_PATH 环境变量！请设置模型的绝对路径。")
+
+    print(f"准备加载数据: {DATA_PATH}")
+    processed_dataset, tokenizer = load_and_prepare_dataset(MODEL_ID, DATA_PATH)
+
+    print(f"\n✅ 成功加载模型: {MODEL_ID}")
     print(f"✅ 数据处理完毕！共计 {len(processed_dataset)} 条数据。")
 
     print("\n" + "=" * 30 + " 1. Messages 格式预览 " + "=" * 30)
