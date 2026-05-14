@@ -1,8 +1,13 @@
 import json
 import os
+from dotenv import load_dotenv
 from datasets import load_dataset
 from transformers import AutoTokenizer
 
+# 加载环境变量
+load_dotenv()
+
+# ===================== 常量定义 =====================
 FUNC_DOCS = """
 (1)day_count(plan)
 文档(Docs)：获取行程(plan)中的天数。
@@ -150,67 +155,82 @@ SYS_PROMPT = f"""
 
 可用的函数库文档如下：
 {FUNC_DOCS}
-
 """
 
-# 获取当前脚本所在目录的父目录(项目根目录)
-current_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-model_id = os.path.join(current_dir, "model", "Qwen", "Qwen3-8B")
-# 注意：train_sft.py 会从这里导入 tokenizer，所以这行保持不变
-tokenizer = AutoTokenizer.from_pretrained(model_id, local_files_only=True)
 
-raw_dataset = load_dataset("json", data_files="train/*.json", split=f"train[:10]")
-
+# ===================== 核心处理函数 =====================
 
 def format_to_messages(example):
     """
-    直接组装为标准的 HuggingFace Messages 格式，无需手动转换为字符串。
+    将单条原始数据转换为标准的 Messages 格式
     """
     user_content = example.get("nature_language", "")
-
     target_list = example.get("hard_logic_py", [])
-    # 将 Python 列表转换为带有换行和缩进的标准 JSON 字符串格式
+
+    # 格式化 JSON 输出
     assistant_content = json.dumps(target_list, ensure_ascii=False, indent=4)
 
-    # 构建包含 system, user, assistant 角色的列表
     messages = [
         {"role": "system", "content": SYS_PROMPT},
         {"role": "user", "content": user_content},
         {"role": "assistant", "content": assistant_content}
     ]
-
-    # 直接返回 messages 字段
     return {"messages": messages}
 
 
-# 5. 批量映射并清洗数据集
-print("开始处理数据集并转换为 Messages 格式...")
-processed_dataset = raw_dataset.map(
-    format_to_messages,
-    remove_columns=raw_dataset.column_names,  # 【关键修改】：删除旧列，只保留我们生成的 messages 列
-    num_proc=8
-)
+def load_and_prepare_dataset(model_path, data_path):
+    """
+    封装完整的数据处理流水线
+    """
+    # 1. 加载 Tokenizer
+    tokenizer = AutoTokenizer.from_pretrained(model_path, local_files_only=True)
 
-print(f"数据加载完成！总计成功处理 {len(processed_dataset)} 条数据。")
-processed_dataset = processed_dataset.shuffle(seed=42)
+    # 2. 加载原始数据集
+    raw_dataset = load_dataset("json", data_files=data_path, split="train")
 
-# 6. 打印第一条看看效果！
-print("\n====== 第一条数据 Messages 格式预览 ======")
-print(json.dumps(processed_dataset[0]["messages"], ensure_ascii=False, indent=2))
+    # 3. 处理数据 (关闭多进程避免死锁，4000条数据单核极快)
+    processed = raw_dataset.map(
+        format_to_messages,
+        remove_columns=raw_dataset.column_names,
+        num_proc=1
+    )
 
-# ========================================================
-# 7. 终极验证：查看 Tokenizer 处理后的真实输入长什么样
-# ========================================================
-print("\n====== 最终喂给模型的真实 String 形态预览 ======")
+    # 4. 打乱数据
+    processed = processed.shuffle(seed=42)
 
-# 取出第一条数据的 messages
-sample_messages = processed_dataset[0]["messages"]
+    return processed, tokenizer
 
-# 模拟 Trainer 内部的操作：应用聊天模板，且暂时不转成 Token ID (tokenize=False)
-final_input_text = tokenizer.apply_chat_template(
-    sample_messages,
-    tokenize=False,
-    add_generation_prompt=False
-)
 
-print(final_input_text)
+# ===================== 模块导出变量 =====================
+# 从环境变量获取路径（必须是绝对路径）
+model_id = os.environ.get("MODEL_PATH")
+_data_path = os.environ.get("DATA_PATH")
+
+# 验证环境变量是否设置
+if not model_id:
+    raise ValueError("请设置环境变量 MODEL_PATH，指向模型的绝对路径")
+if not _data_path:
+    raise ValueError("请设置环境变量 DATA_PATH，指向数据的绝对路径")
+
+# 为了不破坏 train_sft.py 的导入逻辑，我们在模块级别执行一次
+# 这样 train_sft.py 依然可以用 from data.load_data import processed_dataset
+processed_dataset, tokenizer = load_and_prepare_dataset(model_id, _data_path)
+
+# ===================== 测试与预览逻辑 =====================
+# 只有当你直接运行 python load_data.py 时，以下内容才会执行
+if __name__ == "__main__":
+    print(f"\n✅ 成功加载模型: {model_id}")
+    print(f"✅ 数据处理完毕！共计 {len(processed_dataset)} 条数据。")
+
+    print("\n" + "=" * 30 + " 1. Messages 格式预览 " + "=" * 30)
+    sample_msg = processed_dataset[0]["messages"]
+    print(json.dumps(sample_msg, ensure_ascii=False, indent=2))
+
+    print("\n" + "=" * 30 + " 2. Tokenizer 真实输入预览 " + "=" * 30)
+    final_text = tokenizer.apply_chat_template(
+        sample_msg,
+        tokenize=False,
+        add_generation_prompt=False
+    )
+    print(final_text)
+    print("=" * 80)

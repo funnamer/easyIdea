@@ -1,5 +1,6 @@
 import os
 import torch
+from dotenv import load_dotenv
 from transformers import (
     AutoModelForCausalLM,
     BitsAndBytesConfig
@@ -10,6 +11,9 @@ from peft import (
     prepare_model_for_kbit_training
 )
 from trl import SFTTrainer, SFTConfig
+
+# 加载环境变量
+load_dotenv()
 
 # ================= 0. SwanLab 集成 =================
 # 导入 SwanLab 的 HuggingFace 专属回调函数
@@ -30,7 +34,11 @@ from data.load_data import processed_dataset, tokenizer, model_id
 
 # ================= 2. 基础配置 =================
 current_dir = os.path.dirname(os.path.abspath(__file__))
-output_dir = os.path.join(current_dir, "qwen-dsl-qlora-output")
+
+# 从环境变量获取输出目录（必须是绝对路径）
+output_dir = os.environ.get("OUTPUT_DIR")
+if not output_dir:
+    raise ValueError("请设置环境变量 OUTPUT_DIR，指向模型输出目录的绝对路径")
 
 if tokenizer.pad_token is None:
     tokenizer.pad_token = tokenizer.eos_token

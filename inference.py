@@ -1,14 +1,31 @@
 import torch
 import json
 import os
+from dotenv import load_dotenv
 from peft import PeftModel
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-MODEL_ID = "../chinatravel/local_llm/Qwen/Qwen3-8B"
-LORA_PATH = "./qwen3-8b-finetune/final_checkpoint"
-DATA_DIR = "../chinatravel/data/phase1"
-SPLIT_FILE = "../chinatravel/evaluation/default_splits/tpc_aic_phase1.txt"
-OUTPUT_DIR = "../chinatravel/generate_hard_logic/llm_phase1"
+# 加载环境变量
+load_dotenv()
+
+# 从环境变量获取路径（必须是绝对路径）
+MODEL_ID = os.environ.get("MODEL_PATH")
+LORA_PATH = os.environ.get("LORA_PATH")
+DATA_DIR = os.environ.get("DATA_DIR")
+SPLIT_FILE = os.environ.get("SPLIT_FILE")
+OUTPUT_DIR = os.environ.get("INFERENCE_OUTPUT_DIR")
+
+# 验证环境变量是否设置
+if not MODEL_ID:
+    raise ValueError("请设置环境变量 MODEL_PATH，指向基座模型的绝对路径")
+if not LORA_PATH:
+    raise ValueError("请设置环境变量 LORA_PATH，指向LoRA权重的绝对路径")
+if not DATA_DIR:
+    raise ValueError("请设置环境变量 DATA_DIR，指向测试数据目录的绝对路径")
+if not SPLIT_FILE:
+    raise ValueError("请设置环境变量 SPLIT_FILE，指向ID列表文件的绝对路径")
+if not OUTPUT_DIR:
+    raise ValueError("请设置环境变量 INFERENCE_OUTPUT_DIR，指向推理输出目录的绝对路径")
 
 # 1. 加载 Tokenizer 和 基座模型
 tokenizer = AutoTokenizer.from_pretrained(MODEL_ID, trust_remote_code=True)
