@@ -6,7 +6,7 @@ from peft import PeftModel
 from datasets import load_dataset
 from dotenv import load_dotenv
 from tqdm import tqdm  # 用于显示批量处理的进度条
-
+import re
 from data.load_data import SYS_PROMPT
 
 # ================= 初始化与环境变量 =================
@@ -54,6 +54,7 @@ def build_messages(text):
     ]
 
 
+
 # ================= 3. 推理生成 (核心) =================
 def generate_dsl(user_text, tokenizer, model):
     """
@@ -82,7 +83,7 @@ def generate_dsl(user_text, tokenizer, model):
     input_length = model_inputs.input_ids.shape[1]
     response_ids = generated_ids[0][input_length:]
     response = tokenizer.decode(response_ids, skip_special_tokens=True)
-
+    response = re.sub(r'<think>.*?</think>', '', response, flags=re.DOTALL).strip()
     return response
 
 
