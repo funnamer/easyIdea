@@ -1,17 +1,17 @@
 import os
 import json
 import torch
-from dotenv import load_dotenv
 from transformers import AutoTokenizer, AutoModelForCausalLM
 os.environ["PYTORCH_ENABLE_MPS_FALLBACK"] = "1"
-
-# 加载环境变量
-load_dotenv()
-
-# 从环境变量获取模型路径（必须是绝对路径）
+# 获取当前路径
+current_dir = os.path.dirname(os.path.abspath(__file__))
+# 从环境变量获取模型路径（绝对路径）
 model_id = os.environ.get("MODEL_PATH")
 if not model_id:
-    raise ValueError("请设置环境变量 MODEL_PATH，指向模型的绝对路径")
+    raise EnvironmentError(
+        "未设置 MODEL_PATH 环境变量！请设置模型的绝对路径，例如：\n"
+        "export MODEL_PATH=/root/autodl-tmp/model/Qwen/Qwen3-8B"
+    )
 
 # ================= 1. 加载 Tokenizer =================
 tokenizer = AutoTokenizer.from_pretrained(model_id, local_files_only=True)

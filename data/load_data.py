@@ -1,12 +1,10 @@
 import json
 import os
-from dotenv import load_dotenv
 from datasets import load_dataset
 from transformers import AutoTokenizer
+from dotenv import load_dotenv
 
-# 加载环境变量
-load_dotenv()
-
+_=load_dotenv()
 # ===================== 常量定义 =====================
 FUNC_DOCS = """
 (1)day_count(plan)
@@ -201,23 +199,20 @@ def load_and_prepare_dataset(model_path, data_path):
     return processed, tokenizer
 
 
-# ===================== 模块导出变量 =====================
-# 从环境变量获取路径（必须是绝对路径）
+_current_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+_data_path = os.path.join(_current_dir,"data","train", "*.json")
+
+print(_data_path)
 model_id = os.environ.get("MODEL_PATH")
-_data_path = os.environ.get("DATA_PATH")
-
-# 验证环境变量是否设置
 if not model_id:
-    raise ValueError("请设置环境变量 MODEL_PATH，指向模型的绝对路径")
-if not _data_path:
-    raise ValueError("请设置环境变量 DATA_PATH，指向数据的绝对路径")
+    raise EnvironmentError(
+        "未设置 MODEL_PATH 环境变量！请设置模型的绝对路径，例如：\n"
+        "export MODEL_PATH=/root/autodl-tmp/model/Qwen/Qwen3-8B"
+    )
 
-# 为了不破坏 train_sft.py 的导入逻辑，我们在模块级别执行一次
-# 这样 train_sft.py 依然可以用 from data.load_data import processed_dataset
+
 processed_dataset, tokenizer = load_and_prepare_dataset(model_id, _data_path)
 
-# ===================== 测试与预览逻辑 =====================
-# 只有当你直接运行 python load_data.py 时，以下内容才会执行
 if __name__ == "__main__":
     print(f"\n✅ 成功加载模型: {model_id}")
     print(f"✅ 数据处理完毕！共计 {len(processed_dataset)} 条数据。")
