@@ -88,7 +88,7 @@ def generate_dsl(user_text, tokenizer, model):
 
 
 # ================= 4. 批量处理函数 =================
-def batch_inference(input_file, output_file, tokenizer, model):
+def batch_inference(input_file,tokenizer, model):
     """
     读取 JSON 数据集，进行批量推理，并将【原始输入 + 完整输出】保存到文件中。
     """
@@ -139,54 +139,9 @@ if __name__ == "__main__":
     print("⚙️ 正在初始化推理环境...")
     global_tokenizer, global_model = load_model()
 
-    while True:
-        print("\n" + "=" * 50)
-        print("请选择工作模式:")
-        print("1. 交互式测试 (手动输入)")
-        print("2. 批量推理 (读取文件并保存结果)")
-        print("0. 退出程序")
-        print("=" * 50)
+    # 默认配置
+    input_file = "data/test"
 
-        choice = input("👉 请输入选项 (0/1/2): ").strip()
-
-        if choice == '0':
-            print("👋 退出程序。")
-            break
-
-        elif choice == '1':
-            while True:
-                user_input = input("\n👤 请输入旅游需求 (输入 'q' 返回主菜单): ")
-                if user_input.lower() in ['q', 'quit', 'exit']:
-                    break
-                if not user_input.strip():
-                    continue
-
-                print("\n⏳ 模型生成中...")
-                raw_result = generate_dsl(user_input, global_tokenizer, global_model)
-
-                print("\n✨ 完整原始输出如下:")
-                print("-" * 40)
-                print(raw_result)
-                print("-" * 40)
-
-        elif choice == '2':
-            # 这里的路径请替换为你实际的测试集文件路径
-            default_input = "test_data.json"
-            default_output = "batch_results.json"
-
-            input_path = input(f"📂 请输入测试集路径 (直接回车默认用 '{default_input}'): ").strip()
-            if not input_path:
-                input_path = default_input
-
-            output_path = input(f"💾 请输入结果保存路径 (直接回车默认用 '{default_output}'): ").strip()
-            if not output_path:
-                output_path = default_output
-
-            if not os.path.exists(input_path):
-                print(f"❌ 找不到文件: {input_path}，请检查路径是否正确！")
-                continue
-
-            batch_inference(input_path, output_path, global_tokenizer, global_model)
-
-        else:
-            print("⚠️ 无效的选项，请重新输入。")
+    print(f"\n📂 开始批量推理: {input_file}")
+    batch_inference(input_file, global_tokenizer, global_model)
+    print("✅ 全部完成！")
