@@ -198,13 +198,10 @@ def load_and_prepare_dataset(model_path, data_path):
     return processed, tokenizer
 
 
-# --- 替换为以下代码 ---
-# 将路径和模型ID作为常量暴露出去，但不执行处理函数
 CURRENT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_PATH = os.path.join(CURRENT_DIR, "data", "train", "*.json")
 MODEL_ID = os.environ.get("MODEL_PATH")
 
-# 只有当你单独运行 python load_data.py 时，才会执行下面的测试代码
 if __name__ == "__main__":
     if not MODEL_ID:
         raise EnvironmentError("未设置 MODEL_PATH 环境变量！请设置模型的绝对路径。")
@@ -222,8 +219,9 @@ if __name__ == "__main__":
     print("\n" + "=" * 30 + " 2. Tokenizer 真实输入预览 " + "=" * 30)
     final_text = tokenizer.apply_chat_template(
         sample_msg,
-        tokenize=False,
+        tokenize=True,
         add_generation_prompt=False
     )
     print(final_text)
+    print(len(final_text["input_ids"]))
     print("=" * 80)
