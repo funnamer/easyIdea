@@ -15,3 +15,7 @@ pip install torch transformers datasets accelerate peft trl bitsandbytes deepspe
 ```bash
 python data/load_data.py
 ```
+
+```bash
+pip install "swanlab[dashboard]"
+```

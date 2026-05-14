@@ -101,11 +101,11 @@ swanlab_callback = SwanLabCallback(
 sft_config = SFTConfig(
     output_dir=output_dir,
     assistant_only_loss=True,
-    max_seq_length=2048,               # 👈 修改：防止长文档和长代码被截断
-    per_device_train_batch_size=4,
+    max_length=4096,               # 👈 修改：防止长文档和长代码被截断
+    per_device_train_batch_size=2,
     gradient_accumulation_steps=4,
     learning_rate=2e-4,                # 可保持，若 Loss 震荡再降为 1e-4
-    num_train_epochs=3,
+    num_train_epochs=1,
     logging_steps=5,                   # 👈 修改：每 5 步记录一次日志，曲线更平滑
     save_strategy="steps",             # 👈 修改：按步数保存
     save_steps=50,                     # 👈 修改：每 50 步存一个 checkpoint
@@ -124,9 +124,9 @@ sft_config = SFTConfig(
 trainer = SFTTrainer(
     model=model,
     train_dataset=processed_dataset,
-    tokenizer=tokenizer,
+    processing_class=tokenizer,        # 👈 改成 processing_class
     args=sft_config,
-    callbacks=[swanlab_callback]  # 将 SwanLab 注入 Trainer
+    callbacks=[swanlab_callback]
 )
 
 print_main("\n🔥 开始多卡 DeepSpeed 微调训练...")
