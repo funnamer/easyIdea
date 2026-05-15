@@ -1,0 +1,11 @@
+{
+    "uid": "20250323034046928157",
+    "start_city": "成都",
+    "target_city": "深圳",
+    "days": 2,
+    "people_number": 2,
+    "hard_logic_py": [
+        "result_list=[]\nresult=False\nfor activity in allactivities(plan):\n  if activity_position(activity)=='彩虹星球游乐园':\n    if activity_end_time(activity)>='17:10':\n      result=True\nresult_list.append(result)\nresult=True\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation' and room_type(activity)!=1: result=False\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们2人，从成都出发，到深圳旅行2天，要求满足以下任意一个：\n1. 希望不早于17:10离开彩虹星球游乐园\n2. 希望入住单床房"
+}

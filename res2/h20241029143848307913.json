@@ -1,0 +1,11 @@
+{
+    "uid": "h20241029143848307913",
+    "start_city": "重庆",
+    "target_city": "广州",
+    "days": 4,
+    "people_number": 3,
+    "nature_language": "[当前位置重庆,目标位置广州,旅行人数3,旅行天数4] 当前位置重庆。我和朋友们一共3个人想去广州玩4天，预算10000人民币，往返坐飞机，请给我一个旅行规划。",
+    "hard_logic_py": [
+        "result_list=[]\nresult=False\nintercity_transport_go=''\nintercity_transport_back=''\nif allactivities(plan)[0]['type'] == \"airplane\" and intercity_transport_origin(allactivities(plan)[0])==start_city(plan) and allactivities(plan)[-1]['type'] == \"airplane\" and intercity_transport_origin(allactivities(plan)[-1])==target_city(plan):\n  result=True\nresult_list.append(result)\nresult=False\ntotal_cost=0 \nfor activity in allactivities(plan):\n    total_cost+=activity_cost(activity)\n    total_cost += innercity_transport_cost(activity_transports(activity))\nresult=(total_cost<=10000)\nresult_list.append(result)\nresult=True\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['attraction', 'airplane', 'train'] and activity_tickets(activity)!=3: result=False\n  if innercity_transport_type(activity_transports(activity))=='metro'and metro_tickets(activity_transports(activity))!=3: result=False\nresult_list.append(result)\nresult=True\nfor activity in allactivities(plan):\n  if innercity_transport_type(activity_transports(activity))=='taxi'and taxi_cars(activity_transports(activity))!=1: result=False\nresult_list.append(result)\nresult=(day_count(plan)==4)\nresult_list.append(result)\nresult=(people_count(plan)==3)\nresult_list.append(result)\nresult=True\nfor r in result_list:\n  result=result and r"
+    ]
+}

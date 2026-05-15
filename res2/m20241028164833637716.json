@@ -1,0 +1,11 @@
+{
+    "uid": "m20241028164833637716",
+    "start_city": "南京",
+    "target_city": "广州",
+    "days": 3,
+    "people_number": 1,
+    "nature_language": "当前位置南京。我一个人想去广州玩3天，想去詹天佑故居，请给我一个旅行规划。",
+    "hard_logic_py": [
+        "result_list=[]\nattraction_name_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity)=='attraction': attraction_name_set.add(activity_position(activity))\nresult=({\"詹天佑故居\"}<=attraction_name_set)\nresult_list.append(result)\nresult=False\nif day_count(plan)==3:\n  result=True\nresult_list.append(result)\nresult=False\nif people_count(plan)==1:\n  result=True\nresult_list.append(result)\nresult=True\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['attraction', 'airplane', 'train'] and activity_tickets(activity)!=1: result=False\n  if innercity_transport_type(activity_transports(activity))=='metro'and metro_tickets(activity_transports(activity))!=1: result=False\nresult=True\nfor activity in allactivities(plan):\n  if innercity_transport_type(activity_transports(activity))=='taxi'and taxi_cars(activity_transports(activity))!=1: result=False\nresult=True\nfor r in result_list:\n  result=result and r"
+    ]
+}

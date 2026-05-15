@@ -1,0 +1,17 @@
+{
+    "uid": "h20241029143858969810",
+    "start_city": "南京",
+    "target_city": "重庆",
+    "days": 5,
+    "people_number": 1,
+    "nature_language": "[当前位置南京,目标位置重庆,旅行人数1,旅行天数5] 当前位置南京，我希望去重庆进行5天的深度旅行。预算限制在50000元以内。请在这个范围内给予我尽可能好的饮食条件。我不喜欢太过繁忙的景点，请尽可能安排游客人数较少的景点。",
+    "hard_logic_py": [
+        "total_cost=0 \nfor activity in allactivities(plan):\n    total_cost+=activity_cost(activity)\n    total_cost += innercity_transport_cost(activity_transports(activity))\nresult=(total_cost<=50000)",
+        "restaurant_score=0\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['breakfast', 'lunch', 'dinner']: restaurant_score+=1\nresult=restaurant_score>=4",
+        "attraction_crowd=0\nfor activity in allactivities(plan):\n  if activity_type(activity)=='attraction': attraction_crowd+=1\nresult=attraction_crowd<=2",
+        "result=(day_count(plan)==5)",
+        "result=(people_count(plan)==1)",
+        "result=True\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['attraction', 'airplane', 'train'] and activity_tickets(activity)!=1: result=False\n  if innercity_transport_type(activity_transports(activity))=='metro'and metro_tickets(activity_transports(activity))!=1: result=False",
+        "result=True\nfor activity in allactivities(plan):\n  if innercity_transport_type(activity_transports(activity))=='taxi'and taxi_cars(activity_transports(activity))!=1: result=False"
+    ]
+}

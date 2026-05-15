@@ -1,0 +1,15 @@
+{
+    "uid": "m20241028164947135130",
+    "start_city": "上海",
+    "target_city": "广州",
+    "days": 3,
+    "people_number": 3,
+    "nature_language": "当前位置上海。我们三个人想去广州玩3天，住雅致酒店，在珠江新城广州塔附近，请给我们一个旅行规划。",
+    "hard_logic_py": [
+        "accommodation_type_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_type_set.add(accommodation_type(activity, target_city(plan)))\nresult=({\"雅致酒店\"}<=accommodation_type_set)",
+        "result=(day_count(plan)==3)",
+        "result=(people_count(plan)==3)",
+        "result=True\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['attraction', 'airplane', 'train'] and activity_tickets(activity)!=3: result=False\n  if innercity_transport_type(activity_transports(activity))=='metro'and metro_tickets(activity_transports(activity))!=3: result=False",
+        "result=True\nfor activity in allactivities(plan):\n  if innercity_transport_type(activity_transports(activity))=='taxi'and taxi_cars(activity_transports(activity))!=1: result=False"
+    ]
+}

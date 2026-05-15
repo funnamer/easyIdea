@@ -1,0 +1,11 @@
+{
+    "uid": "h20241029143806507479",
+    "start_city": "杭州",
+    "target_city": "广州",
+    "days": 5,
+    "people_number": 2,
+    "nature_language": "[当前位置杭州,目标位置广州,旅行人数2,旅行天数5] 打算从杭州飞到广州，待五天。我和老婆两个人玩，我们想购物、吃正宗的粤菜，求推荐",
+    "hard_logic_py": [
+        "result_list=[]\nresult=False\nintercity_transport_origin_activity=None\nfor activity in allactivities(plan):\n  if activity_type(activity)=='airplane': intercity_transport_origin_activity=activity\nresult=(intercity_transport_origin(activity=intercity_transport_origin_activity)=='杭州')\nresult_list.append(result)\nresult=True\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['attraction', 'airplane', 'train'] and activity_tickets(activity)!=2: result=False\n  if innercity_transport_type(activity_transports(activity))=='metro'and metro_tickets(activity_transports(activity))!=2: result=False\nresult_list.append(result)\nresult=True\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['attraction', 'airplane', 'train'] and activity_tickets(activity)!=2: result=False\n  if innercity_transport_type(activity_transports(activity))=='taxi'and taxi_cars(activity_transports(activity))!=1: result=False\nresult_list.append(result)\nresult=False\nrestaurant_type_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['breakfast', 'lunch', 'dinner']: restaurant_type_set.add(restaurant_type(activity, target_city(plan)))\nresult=({\"粤菜\"}<=restaurant_type_set)\nresult_list.append(result)\nresult=(day_count(plan)==5)\nresult_list.append(result)\nresult=(people_count(plan)==2)\nresult_list.append(result)\nresult=True\nfor r in result_list:\n  result=result and r"
+    ]
+}

@@ -1,0 +1,11 @@
+{
+    "uid": "20250323205639264679",
+    "start_city": "苏州",
+    "target_city": "杭州",
+    "days": 4,
+    "people_number": 4,
+    "hard_logic_py": [
+        "result_list=[]\naccommodation_name_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_name_set.add(activity_position(activity))\nresult=({\"福元酒店(杭州东站店)\"}<=accommodation_name_set)\nresult_list.append(result)\nresult=False\nfor activity in allactivities(plan):\n  if activity_position(activity)=='钱塘苏小小之墓':\n    if activity_end_time(activity)>='14:10':\n      result=True\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们4人，从苏州出发，到杭州旅行4天，要求满足以下任意一个：\n1. 希望入住以下酒店福元酒店(杭州东站店)\n2. 希望不早于14:10离开钱塘苏小小之墓"
+}

@@ -1,0 +1,11 @@
+{
+    "uid": "20250323032623945076",
+    "start_city": "武汉",
+    "target_city": "上海",
+    "days": 4,
+    "people_number": 3,
+    "hard_logic_py": [
+        "result_list=[]\ntotal_cost=0 \nfor activity in allactivities(plan):\n    total_cost+=activity_cost(activity)\n    total_cost += innercity_transport_cost(activity_transports(activity))\nresult=(total_cost<=16000)\nresult_list.append(result)\nresult=False\nfor activity in allactivities(plan):\n  if activity_position(activity)=='巨鹿路':\n    if activity_end_time(activity)>='13:50':\n      result=True\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们3人，从武汉出发，到上海旅行4天，要求满足以下任意一个：\n1. 在旅行上的总预算为16000.0\n2. 希望不早于13:50离开巨鹿路"
+}

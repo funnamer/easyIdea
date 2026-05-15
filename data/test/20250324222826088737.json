@@ -1,0 +1,11 @@
+{
+    "uid": "20250324222826088737",
+    "start_city": "苏州",
+    "target_city": "杭州",
+    "days": 4,
+    "people_number": 4,
+    "hard_logic_py": [
+        "result_list=[]\naccommodation_cost=0\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_cost+=activity_cost(activity)\nresult=accommodation_cost<=5500\nresult_list.append(result)\nresult=False\naccommodation_position=''\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_position=activity_position(activity)\nresult=(poi_distance(target_city(plan), '武林广场', accommodation_position)<=0.8283348713802876)\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们4人，从苏州出发，到杭州旅行4天，要求满足以下任意一个：\n1. 在住宿上的预算为5500.0\n2. 希望住宿地在武林广场周围0.83千米内"
+}

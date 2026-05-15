@@ -1,0 +1,16 @@
+{
+    "uid": "20250322185209769887",
+    "start_city": "南京",
+    "target_city": "北京",
+    "days": 2,
+    "people_number": 5,
+    "hard_logic_py": [
+        "restaurant_cost=0\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['breakfast', 'lunch', 'dinner']: restaurant_cost+=activity_cost(activity)\nresult=restaurant_cost<=1000",
+        "inner_city_transportation_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity)=='transportation': inner_city_transportation_set.add(activity_position(activity))\nresult=not({\"metro\", \"walk\"}&inner_city_transportation_set)",
+        "result=(day_count(plan)==2)",
+        "result=(people_count(plan)==5)",
+        "result=True\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['attraction', 'airplane', 'train'] and activity_tickets(activity)!=5: result=False\n  if innercity_transport_type(activity_transports(activity))=='metro'and metro_tickets(activity_transports(activity))!=5: result=False",
+        "result=True\nfor activity in allactivities(plan):\n  if innercity_transport_type(activity_transports(activity))=='taxi'and taxi_cars(activity_transports(activity))!=2: result=False"
+    ],
+    "nature_language": "我们5人，从南京出发，到北京旅行2天，要求如下：\n在用餐上的预算为1000.0\n不希望以metro 和 walk方式在城市内出行"
+}

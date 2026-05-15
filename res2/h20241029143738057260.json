@@ -1,0 +1,11 @@
+{
+    "uid": "h20241029143738057260",
+    "start_city": "南京",
+    "target_city": "苏州",
+    "days": 1,
+    "people_number": 2,
+    "nature_language": "[当前位置南京,目标位置苏州,旅行人数2,旅行天数1] 打算从南京去苏州一日游，当天前往当天晚上回。帮我规划一下行程。。",
+    "hard_logic_py": [
+        "result_list=[]\nresult=False\nif day_count(plan)==1:\n  result=True\nresult_list.append(result)\nresult=False\nif people_count(plan)==2:\n  result=True\nresult_list.append(result)\nresult=False\nif start_city(plan)=='南京' and target_city(plan)=='苏州':\n  result=True\nresult_list.append(result)\nresult=True\nfor r in result_list:\n  result=result and r"
+    ]
+}

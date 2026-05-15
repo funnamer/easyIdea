@@ -1,0 +1,11 @@
+{
+    "uid": "20250325000354482663",
+    "start_city": "重庆",
+    "target_city": "南京",
+    "days": 4,
+    "people_number": 2,
+    "hard_logic_py": [
+        "result_list=[]\nrestaurant_cost=0\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['breakfast', 'lunch', 'dinner']: restaurant_cost+=activity_cost(activity)\nresult=restaurant_cost<=800\nresult_list.append(result)\nresult=False\naccommodation_position=''\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_position=activity_position(activity)\nresult=(poi_distance(target_city(plan), '南京奥体中心', accommodation_position)<=3.024613653081999)\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们2人，从重庆出发，到南京旅行4天，要求满足以下任意一个：\n1. 在用餐上的预算为800.0\n2. 希望住宿地在南京奥体中心周围3.03千米内"
+}

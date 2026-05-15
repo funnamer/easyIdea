@@ -1,0 +1,11 @@
+{
+    "uid": "20250322225645927377",
+    "start_city": "武汉",
+    "target_city": "成都",
+    "days": 2,
+    "people_number": 2,
+    "hard_logic_py": [
+        "result_list=[]\naccommodation_cost=0\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_cost+=activity_cost(activity)\nresult=accommodation_cost<=600\nresult_list.append(result)\nresult=True\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation' and room_type(activity)!=2: result=False\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们2人，从武汉出发，到成都旅行2天，要求满足以下任意一个：\n1. 在住宿上的预算为600.0\n2. 希望入住双床房"
+}

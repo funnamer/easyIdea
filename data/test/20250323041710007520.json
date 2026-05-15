@@ -1,0 +1,11 @@
+{
+    "uid": "20250323041710007520",
+    "start_city": "苏州",
+    "target_city": "重庆",
+    "days": 3,
+    "people_number": 1,
+    "hard_logic_py": [
+        "result_list=[]\nresult=False\nfor activity in allactivities(plan):\n  if activity_position(activity)=='重庆沉浸式悬浮剧场':\n    if activity_end_time(activity)>='13:50':\n      result=True\nresult_list.append(result)\nresult=True\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation' and room_type(activity)!=2: result=False\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们1人，从苏州出发，到重庆旅行3天，要求满足以下任意一个：\n1. 希望不早于13:50离开重庆沉浸式悬浮剧场\n2. 希望入住双床房"
+}

@@ -1,0 +1,11 @@
+{
+    "uid": "20250323191656218651",
+    "start_city": "南京",
+    "target_city": "重庆",
+    "days": 4,
+    "people_number": 4,
+    "hard_logic_py": [
+        "result_list=[]\nattraction_type_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity)=='attraction': attraction_type_set.add(attraction_type(activity, target_city(plan)))\nresult=({\"商业街区\", \"人文景观\"}<=attraction_type_set)\nresult_list.append(result)\nrestaurant_name_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['breakfast', 'lunch', 'dinner']: restaurant_name_set.add(activity_position(activity))\nresult=not({\"聂发财来凤鱼·重庆头牌江湖菜(解放碑店)\", \"旧识从前慢·江湖菜·川菜音乐餐厅(解放碑店)\"}&restaurant_name_set)\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们4人，从南京出发，到重庆旅行4天，要求满足以下任意一个：\n1. 希望游览商业街区 和 人文景观\n2. 不希望尝试以下餐厅：聂发财来凤鱼·重庆头牌江湖菜(解放碑店) 和 旧识从前慢·江湖菜·川菜音乐餐厅(解放碑店)"
+}

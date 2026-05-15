@@ -1,0 +1,11 @@
+{
+    "uid": "h20241029143623982133",
+    "start_city": "苏州",
+    "target_city": "南京",
+    "days": 2,
+    "people_number": 1,
+    "nature_language": "[当前位置苏州,目标位置南京,旅行人数1,旅行天数2] 我想去苏州旅行两天，能不能给我一个舒适游的规划",
+    "hard_logic_py": [
+        "result_list=[]\naccommodation_type_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_type_set.add(accommodation_type(activity, target_city(plan)))\nresult=({\"舒适\"}<=accommodation_type_set)\nresult_list.append(result)\nresult=True\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['attraction', 'airplane', 'train'] and activity_tickets(activity)!=1: result=False\n  if innercity_transport_type(activity_transports(activity))=='metro'and metro_tickets(activity_transports(activity))!=1: result=False\nresult=True\nfor activity in allactivities(plan):\n  if innercity_transport_type(activity_transports(activity))=='taxi'and taxi_cars(activity_transports(activity))!=1: result=False\nresult=True\nresult=(day_count(plan)==2)\nresult=True\nresult=(people_count(plan)==1)\nresult=True\nresult_list=[result]\nfor r in result_list:\n  result=result and r"
+    ]
+}

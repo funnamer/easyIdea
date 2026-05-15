@@ -1,0 +1,16 @@
+{
+    "uid": "h20241029143457494209",
+    "start_city": "南京",
+    "target_city": "杭州",
+    "days": 3,
+    "people_number": 2,
+    "nature_language": "[当前位置南京,目标位置杭州,旅行人数2,旅行天数3] 我们打算去杭州看西湖，预算2000，给我一个相对舒适的旅游安排。",
+    "hard_logic_py": [
+        "attraction_name_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity)=='attraction': attraction_name_set.add(activity_position(activity))\nresult=({\"西湖\"}<=attraction_name_set)",
+        "total_cost=0 \nfor activity in allactivities(plan):\n    total_cost+=activity_cost(activity)\n    total_cost += innercity_transport_cost(activity_transports(activity))\nresult=(total_cost<=2000)",
+        "result=True\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['attraction', 'airplane', 'train'] and activity_tickets(activity)!=2: result=False\n  if innercity_transport_type(activity_transports(activity))=='metro'and metro_tickets(activity_transports(activity))!=2: result=False",
+        "result=True\nfor activity in allactivities(plan):\n  if innercity_transport_type(activity_transports(activity))=='taxi'and taxi_cars(activity_transports(activity))!=1: result=False",
+        "result=True\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation' and room_count(activity)!=2: result=False",
+        "result=True\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation' and room_type(activity)!=2: result=False"
+    ]
+}

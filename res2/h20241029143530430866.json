@@ -1,0 +1,19 @@
+{
+    "uid": "h20241029143530430866",
+    "start_city": "深圳",
+    "target_city": "北京",
+    "days": 5,
+    "people_number": 3,
+    "nature_language": "[当前位置深圳,目标位置北京,旅行人数3,旅行天数5] 我想带父母去北京玩几天，老人对历史文化更感兴趣，旅途不要太辛苦，留足休息时间，吃喝旅行都要方便",
+    "hard_logic_py": [
+        "attraction_type_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity)=='attraction': attraction_type_set.add(attraction_type(activity, target_city(plan)))\nresult=({\"博物馆/纪念馆\", \"历史古迹\"}<=attraction_type_set)",
+        "result=True\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['attraction', 'airplane', 'train'] and activity_tickets(activity)!=2: result=False\n  if innercity_transport_type(activity_transports(activity))=='metro'and metro_tickets(activity_transports(activity))!=2: result=False",
+        "result=True\nfor activity in allactivities(plan):\n  if innercity_transport_type(activity_transports(activity))=='taxi'and taxi_cars(activity_transports(activity))!=2: result=False",
+        "result=True\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation' and room_count(activity)!=2: result=False",
+        "result=True\nfor activity in allactivities(plan):\n  if activity_type(activity)=='breakfast' and activity_position(activity)=='': result=False\n  if activity_type(activity) in ['lunch', 'dinner'] and activity_position(activity)=='': result=False",
+        "result=(day_count(plan)==5)",
+        "result=(people_count(plan)==3)",
+        "result=True\nfor activity in allactivities(plan):\n  if activity_time(activity)<480: result=False",
+        "result=True\nfor activity in allactivities(plan):\n  if innercity_transport_time(activity_transports(activity))<480: result=False"
+    ]
+}

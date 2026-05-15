@@ -56,3 +56,32 @@ loss=0 应该是没有生成内容，考虑是不是上下文问题,运行load_d
 没料到和GPT分词器差距这么大，所以设置的2048，导致loss=0
 ![token_count.png](pic/token_count.png)
 
+微调后正确率：
+```
+(llm-tl) funnamer@funnamer:~/workspace/china-tr$ python eval_exp.py --splits test_split  --method UrbanTrip_Qwen3-8B_oracletranslation
+config file for testing split: /home/funnamer/workspace/china-tr/chinatravel/evaluation/default_splits/test_split.txt
+method:  UrbanTrip_Qwen3-8B_oracletranslation
+There are 100 results...
+Method: UrbanTrip_Qwen3-8B_oracletranslation
+100%|████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 314.82it/s]
+save to eval_res/splits_test_split/UrbanTrip_Qwen3-8B_oracletranslation/schema.csv
+Schema Pass Rate: 97.0
+100%|█████████████████████████████████████████████████████████████████████████████| 100/100 [00:46<00:00,  2.16it/s]
+save to eval_res/splits_test_split/UrbanTrip_Qwen3-8B_oracletranslation/commonsense.csv
+Commonsense constraints:
+micro accuracy: 97.0
+macro accuracy: 97.0
+Logical constraints (python version):
+100%|█████████████████████████████████████████████████████████████████████████████| 100/100 [00:03<00:00, 29.38it/s]
+conditional_micro_succ_count:  429
+conditional_macro_succ_count:  95
+micro accuracy: 96.18834080717488
+macro accuracy: 95.0
+conditional micro accuracy: 96.18834080717488
+conditional macro accuracy: 95.0
+Conditional LPR: 96.18834080717488
+save to eval_res/splits_test_split/UrbanTrip_Qwen3-8B_oracletranslation/logical_py.csv
+All pass ratio:  95.0
+```
+第一阶段第一名是96.7分
+这个成绩在第一阶段排名5/329

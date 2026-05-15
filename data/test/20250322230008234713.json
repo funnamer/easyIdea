@@ -1,0 +1,11 @@
+{
+    "uid": "20250322230008234713",
+    "start_city": "苏州",
+    "target_city": "重庆",
+    "days": 3,
+    "people_number": 1,
+    "hard_logic_py": [
+        "result_list=[]\naccommodation_type_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_type_set.add(accommodation_type(activity, target_city(plan)))\nresult=({\"管家服务\"}<=accommodation_type_set)\nresult_list.append(result)\nresult=False\nfor activity in allactivities(plan):\n  if activity_position(activity)=='李子坝公园':\n    if activity_end_time(activity)>='13:50':\n      result=True\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们1人，从苏州出发，到重庆旅行3天，要求满足以下任意一个：\n1. 希望入住以下类型的酒店管家服务\n2. 希望不早于13:50离开李子坝公园"
+}

@@ -1,0 +1,11 @@
+{
+    "uid": "20250322220203068176",
+    "start_city": "武汉",
+    "target_city": "成都",
+    "days": 2,
+    "people_number": 2,
+    "hard_logic_py": [
+        "result_list=[]\naccommodation_type_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_type_set.add(accommodation_type(activity, target_city(plan)))\nresult=({\"智能客控\"}<=accommodation_type_set)\nresult_list.append(result)\ntotal_cost=0 \nfor activity in allactivities(plan):\n    total_cost+=activity_cost(activity)\n    total_cost += innercity_transport_cost(activity_transports(activity))\nresult=(total_cost<=4000)\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们2人，从武汉出发，到成都旅行2天，要求满足以下任意一个：\n1. 希望入住以下类型的酒店智能客控\n2. 在旅行上的总预算为4000.0"
+}

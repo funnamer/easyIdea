@@ -1,0 +1,16 @@
+{
+    "uid": "20250324213044642816",
+    "start_city": "深圳",
+    "target_city": "重庆",
+    "days": 3,
+    "people_number": 3,
+    "hard_logic_py": [
+        "inner_city_transportation_cost=0 \nfor activity in allactivities(plan):\n    inner_city_transportation_cost += innercity_transport_cost(activity_transports(activity))\nresult=(inner_city_transportation_cost<=130)",
+        "result=False\nidx_activity0=0\nidx_activity1=0\ni=0\nfor activity in allactivities(plan):\n  if activity_position(activity)=='龙门浩老街':\n    idx_activity0=i\n  if activity_position(activity)=='乔王火锅(洋河店)':\n    idx_activity1=i\n  i+=1\nif idx_activity0<idx_activity1:\n  result=True",
+        "result=(day_count(plan)==3)",
+        "result=(people_count(plan)==3)",
+        "result=True\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['attraction', 'airplane', 'train'] and activity_tickets(activity)!=3: result=False\n  if innercity_transport_type(activity_transports(activity))=='metro'and metro_tickets(activity_transports(activity))!=3: result=False",
+        "result=True\nfor activity in allactivities(plan):\n  if innercity_transport_type(activity_transports(activity))=='taxi'and taxi_cars(activity_transports(activity))!=1: result=False"
+    ],
+    "nature_language": "我们3人，从深圳出发，到重庆旅行3天，要求如下：\n在城市内出行的预算为130\n希望先去龙门浩老街，再去乔王火锅(洋河店)"
+}

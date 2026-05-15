@@ -1,0 +1,16 @@
+{
+    "uid": "20250323123942011763",
+    "start_city": "深圳",
+    "target_city": "上海",
+    "days": 3,
+    "people_number": 4,
+    "hard_logic_py": [
+        "result=False\nfor activity in allactivities(plan):\n  if activity_position(activity)=='荷风细雨·中国茶宴(世纪大道店)':\n    if activity_start_time(activity)<='17:00' and activity_end_time(activity)>='17:30':\n      result=True",
+        "result=False\naccommodation_position=''\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_position=activity_position(activity)\nresult=(poi_distance(target_city(plan), '外滩', accommodation_position)<=8.912861818133598)",
+        "result=(day_count(plan)==3)",
+        "result=(people_count(plan)==4)",
+        "result=True\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['attraction', 'airplane', 'train'] and activity_tickets(activity)!=4: result=False\n  if innercity_transport_type(activity_transports(activity))=='metro'and metro_tickets(activity_transports(activity))!=4: result=False",
+        "result=True\nfor activity in allactivities(plan):\n  if innercity_transport_type(activity_transports(activity))=='taxi'and taxi_cars(activity_transports(activity))!=1: result=False"
+    ],
+    "nature_language": "我们4人，从深圳出发，到上海旅行3天，要求如下：\n希望在17:00到17:30之间游览荷风细雨·中国茶宴(世纪大道店)\n希望住宿地在外滩周围8.92千米内"
+}

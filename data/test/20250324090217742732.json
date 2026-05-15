@@ -1,0 +1,11 @@
+{
+    "uid": "20250324090217742732",
+    "start_city": "苏州",
+    "target_city": "北京",
+    "days": 3,
+    "people_number": 3,
+    "hard_logic_py": [
+        "result_list=[]\nattraction_name_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity)=='attraction': attraction_name_set.add(activity_position(activity))\nresult=({\"杨梅竹斜街\", \"太和门\"}<=attraction_name_set)\nresult_list.append(result)\nresult=False\nfor activity in allactivities(plan):\n  if activity_position(activity)=='嘉德艺术中心':\n    if activity_end_time(activity)>='13:50':\n      result=True\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们3人，从苏州出发，到北京旅行3天，要求满足以下任意一个：\n1. 希望游览杨梅竹斜街 和 太和门\n2. 希望不早于13:50离开嘉德艺术中心"
+}

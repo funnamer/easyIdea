@@ -1,0 +1,16 @@
+{
+    "uid": "20250324220902522602",
+    "start_city": "广州",
+    "target_city": "武汉",
+    "days": 3,
+    "people_number": 1,
+    "hard_logic_py": [
+        "attraction_cost=0\nfor activity in allactivities(plan):\n  if activity_type(activity)=='attraction': attraction_cost+=activity_cost(activity)\nresult=attraction_cost<=0",
+        "result=True\nfor activity in allactivities(plan):\n  if innercity_transport_type(activity_transports(activity)) != 'taxi' and innercity_transport_distance(activity_transports(activity))>4.4799999999999995:\n    result=False\n    break",
+        "result=(day_count(plan)==3)",
+        "result=(people_count(plan)==1)",
+        "result=True\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['attraction', 'airplane', 'train'] and activity_tickets(activity)!=1: result=False\n  if innercity_transport_type(activity_transports(activity))=='metro'and metro_tickets(activity_transports(activity))!=1: result=False",
+        "result=True\nfor activity in allactivities(plan):\n  if innercity_transport_type(activity_transports(activity))=='taxi'and taxi_cars(activity_transports(activity))!=1: result=False"
+    ],
+    "nature_language": "我们1人，从广州出发，到武汉旅行3天，要求如下：\n希望只游览免费景点\n若两地点间交通距离超过4.4799999999999995千米，则打车出行"
+}

@@ -1,0 +1,11 @@
+{
+    "uid": "20250323140656231848",
+    "start_city": "南京",
+    "target_city": "北京",
+    "days": 2,
+    "people_number": 5,
+    "hard_logic_py": [
+        "result_list=[]\nresult=False\nfor activity in allactivities(plan):\n  if activity_position(activity)=='八大胡同':\n    if activity_end_time(activity)>='16:10':\n      result=True\nresult_list.append(result)\nresult=False\naccommodation_position=''\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_position=activity_position(activity)\nresult=(poi_distance(target_city(plan), '北京大观园', accommodation_position)<=8.155352564409625)\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们5人，从南京出发，到北京旅行2天，要求满足以下任意一个：\n1. 希望不早于16:10离开八大胡同\n2. 希望住宿地在北京大观园周围8.16千米内"
+}

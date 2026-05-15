@@ -1,0 +1,16 @@
+{
+    "uid": "h20241029143625307702",
+    "start_city": "北京",
+    "target_city": "上海",
+    "days": 3,
+    "people_number": 1,
+    "nature_language": "[当前位置北京,目标位置上海,旅行人数1,旅行天数3] 我准备从北京前往上海，停留3天，想要品尝一下上海的比如米其林三星饭馆这样的高端餐饮，酒店就省些钱，请给我一些推荐",
+    "hard_logic_py": [
+        "restaurant_type_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['breakfast', 'lunch', 'dinner']: restaurant_type_set.add(restaurant_type(activity, target_city(plan)))\nresult=({\"米其林三星\"}<=restaurant_type_set)",
+        "accommodation_cost=0\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_cost+=activity_cost(activity)\nresult=accommodation_cost<=200",
+        "result=(day_count(plan)==3)",
+        "result=(people_count(plan)==1)",
+        "result=True\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['attraction', 'airplane', 'train'] and activity_tickets(activity)!=1: result=False\n  if innercity_transport_type(activity_transports(activity))=='metro'and metro_tickets(activity_transports(activity))!=1: result=False",
+        "result=True\nfor activity in allactivities(plan):\n  if innercity_transport_type(activity_transports(activity))=='taxi'and taxi_cars(activity_transports(activity))!=1: result=False"
+    ]
+}

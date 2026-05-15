@@ -1,0 +1,11 @@
+{
+    "uid": "m20241028164908007773",
+    "start_city": "成都",
+    "target_city": "北京",
+    "days": 2,
+    "people_number": 3,
+    "nature_language": "当前位置成都。我们三个人想去北京玩2天，想吃隆福寺附近的宴锦堂，请给我们一个旅行规划。",
+    "hard_logic_py": [
+        "result_list=[]\nrestaurant_name_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['breakfast', 'lunch', 'dinner']: restaurant_name_set.add(activity_position(activity))\nresult=({\"宴锦堂\"}<=restaurant_name_set)\nresult_list.append(result)\nresult=False\nif day_count(plan)==2:\n  result=True\nresult_list.append(result)\nresult=False\nif people_count(plan)==3:\n  result=True\nresult_list.append(result)\nresult=True\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['attraction', 'airplane', 'train'] and activity_tickets(activity)!=3: result=False\n  if innercity_transport_type(activity_transports(activity))=='metro'and metro_tickets(activity_transports(activity))!=3: result=False\nresult=True\nfor activity in allactivities(plan):\n  if innercity_transport_type(activity_transports(activity))=='taxi'and taxi_cars(activity_transports(activity))!=1: result=False\nresult=True\nfor r in result_list:\n  result=result and r"
+    ]
+}

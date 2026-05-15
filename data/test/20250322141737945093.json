@@ -1,0 +1,11 @@
+{
+    "uid": "20250322141737945093",
+    "start_city": "深圳",
+    "target_city": "上海",
+    "days": 3,
+    "people_number": 4,
+    "hard_logic_py": [
+        "result_list=[]\nrestaurant_name_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity) in ['breakfast', 'lunch', 'dinner']: restaurant_name_set.add(activity_position(activity))\nresult=({\"夜上海(新天地太平湖店)\", \"绿波廊(豫园店)\", \"冯爸面馆(陕西南路店)\"}<=restaurant_name_set)\nresult_list.append(result)\naccommodation_name_set=set()\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_name_set.add(activity_position(activity))\nresult=({\"base佰舍服务式公寓(上海新国际博览中心浦三路店)\"}<=accommodation_name_set)\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们4人，从深圳出发，到上海旅行3天，要求满足以下任意一个：\n1. 希望尝试以下餐厅：夜上海(新天地太平湖店) 和 绿波廊(豫园店) 和 冯爸面馆(陕西南路店)\n2. 希望入住以下酒店base佰舍服务式公寓(上海新国际博览中心浦三路店)"
+}

@@ -1,0 +1,11 @@
+{
+    "uid": "20250323115418579738",
+    "start_city": "深圳",
+    "target_city": "上海",
+    "days": 3,
+    "people_number": 4,
+    "hard_logic_py": [
+        "result_list=[]\ntotal_cost=0 \nfor activity in allactivities(plan):\n    total_cost+=activity_cost(activity)\n    total_cost += innercity_transport_cost(activity_transports(activity))\nresult=(total_cost<=13600)\nresult_list.append(result)\nresult=False\naccommodation_position=''\nfor activity in allactivities(plan):\n  if activity_type(activity)=='accommodation': accommodation_position=activity_position(activity)\nresult=(poi_distance(target_city(plan), '世博文化公园', accommodation_position)<=9.510094781838683)\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们4人，从深圳出发，到上海旅行3天，要求满足以下任意一个：\n1. 在旅行上的总预算为13600.0\n2. 希望住宿地在世博文化公园周围9.52千米内"
+}

@@ -1,0 +1,11 @@
+{
+    "uid": "20250323032959020271",
+    "start_city": "北京",
+    "target_city": "武汉",
+    "days": 4,
+    "people_number": 5,
+    "hard_logic_py": [
+        "result_list=[]\ntotal_cost=0 \nfor activity in allactivities(plan):\n    total_cost+=activity_cost(activity)\n    total_cost += innercity_transport_cost(activity_transports(activity))\nresult=(total_cost<=18200)\nresult_list.append(result)\nresult=False\nfor activity in allactivities(plan):\n  if activity_position(activity)=='东湖听涛景区':\n    if activity_end_time(activity)>='13:50':\n      result=True\nresult_list.append(result)\nresult=False\nfor r in result_list:\n  result=result or r"
+    ],
+    "nature_language": "我们5人，从北京出发，到武汉旅行4天，要求满足以下任意一个：\n1. 在旅行上的总预算为18200.0\n2. 希望不早于13:50离开东湖听涛景区"
+}
